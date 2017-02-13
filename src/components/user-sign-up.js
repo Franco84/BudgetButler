@@ -17,15 +17,21 @@ class UserSignUp extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-        <input ref="name" />
-        <input ref="email" />
-        <input type="password" ref="userPassword" />
-        <input type="password" ref="passwordConfirmation" />
-        <button type="submit">Submit</button>
-        </form>
-      </div>
+      <div className="container">
+          <div className="row">
+            <div className="col l12 m12 s12">
+                  <div className="input-field col s6">
+                    <form onSubmit={this.handleSubmit}>
+                    <input placeholder="Placeholder" id="first_name" type="text" ref="name" className="validate" />
+                    <input ref="email" />
+                    <input type="password" ref="userPassword" />
+                    <input type="password" ref="passwordConfirmation" />
+                    <button type="submit">Submit</button>
+                    </form>
+                  </div>
+            </div>
+          </div>
+          </div>
     )
   }
 }
