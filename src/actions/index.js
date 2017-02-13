@@ -1,11 +1,12 @@
 import axios from 'axios'
-import {browserHistory} from 'react-redux'
+import {browserHistory} from 'react-router'
 
 const URL = "http://localhost:3000/api/v1/"
 
 export const createUser = (user) => {
   const response = axios.post(URL + 'signup', user).then((userData) => {
-    sessionStorage.setItems("jwt", userData.data.jwt)
+    sessionStorage.setItem("jwt", userData.data.jwt)
+    sessionStorage.setItem("name", userData.data.name)
     browserHistory.push('/')
     return userData
   })
