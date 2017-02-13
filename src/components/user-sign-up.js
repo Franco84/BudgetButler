@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {bindActionCreators} from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { createUser } from '../actions/index'
 import {connect} from 'react-redux'
 
