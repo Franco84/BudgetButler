@@ -19,16 +19,19 @@ class UserSignUp extends Component {
     return (
       <div className="container">
           <div className="row">
-            <div className="col l12 m12 s12">
-                  <div className="input-field col s6">
+            <div className="col l6 m12 s12 offset-l2">
+                    <br />
                     <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Placeholder" id="first_name" type="text" ref="name" className="validate" />
-                    <input ref="email" />
-                    <input type="password" ref="userPassword" />
-                    <input type="password" ref="passwordConfirmation" />
-                    <button type="submit">Submit</button>
+                    <label htmlFor="name">Name</label>
+                    <input placeholder="Name" id="name" type="text" ref="name" className="validate" />
+                    <label htmlFor="email">Email</label>
+                    <input placeholder="Email" id="email" type="text" ref="email" className="validate" />
+                    <label htmlFor="password">Name</label>
+                    <input placeholder="Password" id="password" type="password" className="validate" ref="userPassword" />
+                    <label htmlFor="passwordConfirmation">Name</label>
+                    <input placeholder="Password" id="passwordConfirmation" type="password" className="validate" ref="passwordConfirmation" />
+                    <button className="btn blue darken-2" type="submit">Submit</button>
                     </form>
-                  </div>
             </div>
           </div>
           </div>
