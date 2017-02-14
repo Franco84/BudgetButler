@@ -16,3 +16,15 @@ export const createUser = (user) => {
     payload: response
   }
 }
+
+export const fetchTransactions = (transaction) => {
+  const response = axios.get(URL + 'transactions').then((transactionData) => {
+    browserHistory.push('/transactions')
+    return transactionData.data
+  })
+
+  return {
+    type: 'FETCH_TRANSACTIONS',
+    payload: response
+  }
+}
