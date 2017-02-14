@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Home from './Home';
 import {createStore, applyMiddleware} from 'redux'
 import {Router, browserHistory} from 'react-router'
 import {Provider} from 'react-redux'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserSignUp from './components/user-sign-up'
 
-class App extends Component {
+class Home extends Component {
   render() {
     return (
       <div>
@@ -23,4 +23,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;
