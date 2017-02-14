@@ -11,7 +11,6 @@ export default class Transaction extends Component {
   render(){
     return(
       <div>
-        Hi.
         <TransactionList />
       </div>
     )

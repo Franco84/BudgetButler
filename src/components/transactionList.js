@@ -5,10 +5,6 @@ import { fetchTransactions } from '../actions'
 import TransactionItem from './transactionItem'
 
 class TransactionList extends Component {
-  // constructor() {
-  //
-  //   this.handleSubmit = this.handleSubmit.bind(this)
-  // }
 
   componentDidMount(){
       this.props.fetchTransactions()
@@ -25,10 +21,7 @@ class TransactionList extends Component {
     return ( <div>Loading...</div>) }
     return(
       <div>
-          hi.
-          <div>
             {this.transactionItems()}
-          </div>
       </div>
     )
   }
@@ -36,7 +29,6 @@ class TransactionList extends Component {
 
 
 function mapStateToProps(state){
-  // debugger
   return {
      transactions: state.transactions
  }

@@ -1,27 +1,28 @@
 import React from 'react'
 
 export default function (props) {
-
     return(
-      <div>
-        <ul>
-          <li>
-            {props.transaction.name}
+    <div className="row">
+      <div className="col l4 m4 s4">
+      <table>
+        <thead>
+          <tr>
+              <th data-field="id">Name</th>
+              <th data-field="name">Value</th>
+              <th data-field="price">Date</th>
+          </tr>
+        </thead>
 
-          </li>
-          <li>
-            {props.transaction.expense_id}
-
-          </li>
-          <li>
-            {props.transaction.value}
-
-          </li>
-          <li>
-            {props.transaction.date}
-
-          </li>
-        </ul>
+        <tbody>
+          <tr>
+            <td>{props.transaction.name}</td>
+            <td>${props.transaction.value}</td>
+            <td>{props.transaction.date}</td>
+          </tr>
+        </tbody>
+      </table>
       </div>
+      </div>
+
     )
   }
