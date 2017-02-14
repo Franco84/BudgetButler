@@ -6,11 +6,11 @@ class TransactionCreate extends Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {transaction: {name: "", value: "", date: ""} } // NEED EXPENSE ID HERE ALSO 
+		this.state = {transaction: {name: "", value: "", date: ""} } // NEED EXPENSE ID HERE ALSO
 	}
 
 	handleInputChange(key, event) {
-   		this.setState({ 
+   		this.setState({
    			transaction: Object.assign({}, this.state.transaction, {[key]: event.target.value} )
    		});
 	}
@@ -24,13 +24,17 @@ class TransactionCreate extends Component {
 	render() {
 		return(
 			<div>
+				<div className="row">
+					<div className="col l4 m4 s4">
 				<h3> Add a transaction </h3>
-				<form onSubmit={this.handleSubmit.bind(this)}> 
+				<form onSubmit={this.handleSubmit.bind(this)}>
 					Name<input type='text' value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
-					Value <input type='text' value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
-					Date <input type='text' value={this.state.transaction.date} onChange={this.handleInputChange.bind(this, 'date')}/>
+					Value <input type='number' value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
+					Date <input type='date' className="datepicker" value={this.state.transaction.date} onChange={this.handleInputChange.bind(this, 'date')}/>
 					<button type="submit" >Submit </button>
-				</form> 
+				</form>
+			</div>
+			</div>
 			</div>
 
 		)

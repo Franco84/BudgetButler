@@ -31,7 +31,7 @@ export const fetchTransactions = (transaction) => {
 
 
 export const createTransaction = (transaction) => {
-  const response = axios.post(URL + 'transactions').then((transactionData) => {
+  const response = axios.post(URL + 'transactions', {transaction}).then((transactionData) => {
     return transactionData.data
   })
 
