@@ -28,3 +28,15 @@ export const fetchTransactions = (transaction) => {
     payload: response
   }
 }
+
+
+export const createTransaction = (transaction) => {
+  const response = axios.post(URL + 'transactions').then((transactionData) => {
+    return transactionData.data
+  })
+
+  return {
+    type: 'CREATE_TRANSACTION',
+    payload: response
+  }
+}
