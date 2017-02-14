@@ -20,8 +20,25 @@ class TransactionList extends Component {
     if (!this.props.transactions) {
     return ( <div>Loading...</div>) }
     return(
+
       <div>
+        <div className="row">
+          <div className="col l4 m4 s4">
+          <table>
+            <thead>
+              <tr>
+                  <th data-field="id">Name</th>
+                  <th data-field="name">Value</th>
+                  <th data-field="price">Date</th>
+              </tr>
+            </thead>
+
+            <tbody>
             {this.transactionItems()}
+            </tbody>
+          </table>
+          </div>
+          </div>
       </div>
     )
   }
