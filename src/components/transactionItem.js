@@ -4,8 +4,8 @@ export default function (props) {
     return(
           <tr>
             <td>{props.transaction.name}</td>
-            <td>${props.transaction.value}</td>
-            <td>{props.transaction.date}</td>
+            <td>${props.transaction.value.toFixed(2)}</td>
+            <td>{props.transaction.day}</td>
           </tr>
 
 
