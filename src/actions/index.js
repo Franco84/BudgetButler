@@ -40,3 +40,25 @@ export const createTransaction = (transaction) => {
     payload: response
   }
 }
+
+
+export const authenticateUser = (user) => {
+  const response = axios.post(URL + 'signin', {user}).then((userData) => {
+    if (userData.data.jwt) {
+      sessionStorage.setItem("jwt", userData.data.jwt)
+      browserHistory.push('/transactions')
+      return userData.data.jwt
+    } else {
+      browserHistory.push('/login')
+      return userData.data.message
+    }
+// if userData.data.status_code === 422 //signin
+//     sessionStorage.setItem("name", userData.data.name)
+  })
+//
+
+  return {
+    type: 'AUTHENTICATE_USER',
+    payload: response
+  }
+}

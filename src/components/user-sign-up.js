@@ -26,9 +26,9 @@ class UserSignUp extends Component {
                     <input placeholder="Name" id="name" type="text" ref="name" className="validate" />
                     <label htmlFor="email">Email</label>
                     <input placeholder="Email" id="email" type="text" ref="email" className="validate" />
-                    <label htmlFor="password">Name</label>
+                    <label htmlFor="password">Password</label>
                     <input placeholder="Password" id="password" type="password" className="validate" ref="userPassword" />
-                    <label htmlFor="passwordConfirmation">Name</label>
+                    <label htmlFor="passwordConfirmation">Confirm Password</label>
                     <input placeholder="Password" id="passwordConfirmation" type="password" className="validate" ref="passwordConfirmation" />
                     <button className="btn blue darken-2" type="submit">Submit</button>
                     </form>
