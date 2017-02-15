@@ -3,7 +3,7 @@ import userReducer from './user-reducer'
 import transactionReducer from './transaction-reducer'
 
 const rootReducer = combineReducers({
-  users: userReducer,
+  currentUser: userReducer,
   transactions: transactionReducer
 })
 
