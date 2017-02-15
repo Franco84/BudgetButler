@@ -3,6 +3,9 @@ import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
 import { fetchTransactions } from '../actions'
 import TransactionItem from './transactionItem'
+import 'materialize-css/bin/materialize.css'
+import 'materialize-css/bin/materialize.js'
+
 
 class TransactionList extends Component {
 
@@ -14,33 +17,29 @@ class TransactionList extends Component {
     return this.props.transactions.map((tran, i) => { return <TransactionItem transaction={tran} key={i}/>})
   }
 
-
   render(){
 
     if (!this.props.transactions) {
-    return ( <div>Loading...</div>) }
-    return(
+      return ( <div>Loading...</div>) }
+    else return(
 
       <div>
+
         <div className="row">
           <div className="col l4 m4 s4">
-          <table>
-            <thead>
-              <tr>
-                  <th data-field="id">Name</th>
-                  <th data-field="name">Value</th>
-                  <th data-field="price">Date</th>
-              </tr>
-            </thead>
-
-            <tbody>
-            {this.transactionItems()}
-            </tbody>
-          </table>
+              Name<br /><hr />
           </div>
+          <div className="col l4 m4 s4">
+              Amount<br /><hr />
           </div>
-
-        Hellooooooo
+            <div className="col l4 m4 s4">
+                Date<br /><hr />
+            </div>
+          </div>
+              <div className="row">
+              {this.transactionItems()}
+            </div>
+        <br />
       </div>
     )
   }
