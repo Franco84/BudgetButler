@@ -6,7 +6,7 @@ class TransactionCreate extends Component {
 
 	constructor(props) {
 		super(props)
-		this.state = {transaction: {name: "", value: "", date: ""} } // NEED EXPENSE ID HERE ALSO
+		this.state = {transaction: {name: "", value: "", day: ""} } // NEED EXPENSE ID HERE ALSO
 	}
 
 	handleInputChange(key, event) {
@@ -18,7 +18,7 @@ class TransactionCreate extends Component {
 	handleSubmit(event) {
 		event.preventDefault()
 		this.props.createTransaction( this.state.transaction )
-		this.setState({transaction: {name: "", value: "", date: ""} })
+		this.setState({transaction: {name: "", value: "", day: ""} })
 	}
 
 	render() {
@@ -30,7 +30,7 @@ class TransactionCreate extends Component {
 				<form onSubmit={this.handleSubmit.bind(this)}>
 					Name<input type='text' value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
 					Value <input type='number' value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
-					Date <input type='date' className="datepicker" value={this.state.transaction.date} onChange={this.handleInputChange.bind(this, 'date')}/>
+					Date <input type='date' className="datepicker" value={this.state.transaction.day} onChange={this.handleInputChange.bind(this, 'day')}/>
 					<button type="submit" >Submit </button>
 				</form>
 			</div>
