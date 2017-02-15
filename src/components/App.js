@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserSignUp from './user-sign-up'
 import {Link} from 'react-router'
+import Logout from './logout'
 
 class Home extends Component {
   render() {
@@ -15,6 +16,7 @@ class Home extends Component {
               <li><a href="collapsible.html">Goals</a></li>
               <li><a href="badges.html">Income</a></li>
               <li><a href="collapsible.html">Expenses</a></li>
+              <li><Logout /></li> 
             </ul>
           </div>
         </nav>

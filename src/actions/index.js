@@ -52,13 +52,27 @@ export const authenticateUser = (user) => {
       browserHistory.push('/login')
       return userData.data.message
     }
-// if userData.data.status_code === 422 //signin
-//     sessionStorage.setItem("name", userData.data.name)
   })
-//
 
   return {
     type: 'AUTHENTICATE_USER',
     payload: response
   }
 }
+
+
+export const logoutUser = () => {
+
+  sessionStorage.removeItem('jwt')
+
+  return {
+    type: 'LOGOUT_USER',
+    payload: []
+  }
+}
+
+
+
+
+
+
