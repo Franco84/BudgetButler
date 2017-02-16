@@ -69,7 +69,7 @@ export const deleteTransaction = (transaction) => {
 export const authenticateUser = (user) => {
   const response = axios.post(URL + 'signin', {user}).then((userData) => {
     if (userData.data.jwt) {
-      console.log('')
+      console.log(' ')
       sessionStorage.setItem("jwt", userData.data.jwt)
       return userData.data.jwt
     } else {
