@@ -18,7 +18,7 @@ export const createUser = (user) => {
 }
 
 export const fetchTransactions = (transaction) => {
-
+axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.get(URL + 'transactions').then((transactionData) => {
     browserHistory.push('/transactions')
     return transactionData.data
