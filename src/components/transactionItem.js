@@ -8,7 +8,6 @@ import 'jquery-ui/themes/base/selectable.css';
 import 'jquery-ui/ui/core';
 import 'jquery-ui/ui/widgets/selectable';
 import ReactDOM from 'react-dom'
-import {findDOMNode} from 'react-dom';
 import {Collapsible, CollapsibleItem} from 'react-materialize'
 
 
@@ -23,7 +22,7 @@ render () {
     return(
       <div>
       <div className="col l4 m4 s4">
-        <Collapsible accordian="true">
+        <Collapsible className="borderless" accordian="true">
           <CollapsibleItem header={this.props.transaction.name}>
               <form><input type="text" placeholder={this.props.transaction.name} /><button type="submit">Submit</button></form>
           </CollapsibleItem>

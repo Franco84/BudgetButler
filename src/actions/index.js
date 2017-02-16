@@ -32,6 +32,7 @@ export const fetchTransactions = (transaction) => {
 
 
 export const createTransaction = (transaction) => {
+  let headers = sessionStorage.getItem('jwt');
   const response = axios.post(URL + 'transactions', {transaction}).then((transactionData) => {
     return transactionData.data
   })
