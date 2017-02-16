@@ -17,6 +17,7 @@ export const createUser = (user) => {
   }
 }
 
+export const fetchTransactions = (transaction) => {
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.get(URL + 'transactions').then((transactionData) => {
     browserHistory.push('/transactions')
@@ -43,16 +44,21 @@ export const createTransaction = (transaction) => {
   }
 }
 
-export const updateTransaction = (id, transactionParams) => {
+export const updateTransaction = (transaction) => {
   axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-
-
+  const response = axios.patch(URL + `transactions/${transaction.id}`, {transaction}).then((transactionData) => {
+    return transactionData.data
+  })
+  return {
+    type: 'UPDATE_TRANSACTION',
+    payload: response
+  }
 }
-
 
 export const authenticateUser = (user) => {
   const response = axios.post(URL + 'signin', {user}).then((userData) => {
     if (userData.data.jwt) {
+      console.log('')
       sessionStorage.setItem("jwt", userData.data.jwt)
       return userData.data.jwt
     } else {

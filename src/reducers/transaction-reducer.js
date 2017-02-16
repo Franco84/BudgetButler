@@ -6,6 +6,8 @@ export default (state=[], action) => {
         return action.payload
     case "LOGOUT_USER":
       return action.payload
+    case "UPDATE_TRANSACTION":
+      return action.payload
     default:
       return state
   }

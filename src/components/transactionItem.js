@@ -18,7 +18,7 @@ class TransactionItem extends React.Component {
 
 constructor(props) {
     super(props)
-    this.state = {transaction: {name: this.props.transaction.name, value: this.props.transaction.value, day: this.props.transaction.day}}
+    this.state = {transaction: {name: this.props.transaction.name, value: this.props.transaction.value, day: this.props.transaction.day, id: this.props.transaction.id}}
 }
 
 transactionInfo() {
@@ -37,9 +37,7 @@ handleChange(key, event) {
 
 handleSubmit(event) {
   event.preventDefault()
-  const id = this.props.transaction.id
-  const transactionParams = this.state
-  this.props.updateTransaction(id, transactionParams)
+  this.props.updateTransaction(this.state.transaction)
 }
 
 
@@ -66,7 +64,6 @@ form() {
       </div>
       <br />
       <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
-      <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Delete</button>
   </form>
   )
 }
@@ -82,10 +79,10 @@ render () {
   }
 }
 
-mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch){
     return {
-    updateTransaction: function(id, transactionParams){
-      let action = updateTransaction( id, transactionParams )
+    updateTransaction: function(transaction){
+      let action = updateTransaction( transaction )
       dispatch( action )
     }
   }
@@ -93,4 +90,6 @@ mapDispatchToProps(dispatch) {
 
 
 export default connect(null, mapDispatchToProps)(TransactionItem)
+
+
 
