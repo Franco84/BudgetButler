@@ -5,6 +5,7 @@ import { fetchTransactions } from '../actions'
 import TransactionItem from './transactionItem'
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
+import {Collapsible, CollapsibleItem} from 'react-materialize'
 
 
 class TransactionList extends Component {
@@ -36,7 +37,11 @@ class TransactionList extends Component {
             </div>
           </div>
               <div className="row">
+                <div className="col l12 m12 s12">
+                  <Collapsible>
               {this.transactionItems()}
+                  </Collapsible>
+                </div>
             </div>
         <br />
       </div>

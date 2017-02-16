@@ -18,7 +18,7 @@ handleSubmit(event) {
   // eventPreventDefault()
 }
 
-stuff() {
+transactionInfo() {
   return (
     <span>
       <span style={{float:'left', width:"33%"}}>{this.props.transaction.name}</span>
@@ -52,14 +52,10 @@ form() {
 render () {
     return(
       <div>
-      <div className="col l12 m12 s12">
-        <Collapsible className="borderless" accordian="true">
-          <CollapsibleItem className="center" header={this.stuff()}>
+          <CollapsibleItem className="center" header={this.transactionInfo()}>
                {this.form()}
           </CollapsibleItem>
-        </Collapsible>
       </div>
-    </div>
     )
   }
 }
