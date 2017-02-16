@@ -17,7 +17,6 @@ export const createUser = (user) => {
   }
 }
 
-export const fetchTransactions = (transaction) => {
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.get(URL + 'transactions').then((transactionData) => {
     browserHistory.push('/transactions')
@@ -32,6 +31,7 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
 
 
 export const createTransaction = (transaction) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   let headers = sessionStorage.getItem('jwt');
   const response = axios.post(URL + 'transactions', {transaction}).then((transactionData) => {
     return transactionData.data
@@ -41,6 +41,12 @@ export const createTransaction = (transaction) => {
     type: 'CREATE_TRANSACTION',
     payload: response
   }
+}
+
+export const updateTransaction = (id, transactionParams) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+
+
 }
 
 
@@ -77,3 +83,4 @@ export const logoutUser = () => {
     payload: []
   }
 }
+
