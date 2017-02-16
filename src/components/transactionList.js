@@ -24,25 +24,23 @@ class TransactionList extends Component {
     else return(
 
       <div>
-
-        <div className="row">
-          <div className="col l4 m4 s4 center">
+        <br />
+          <div className="col l3 m3 s3 center">
               Name<br /><hr />
           </div>
-          <div className="col l4 m4 s4 center">
+          <div className="col l3 m3 s3 center">
               Amount<br /><hr />
           </div>
-            <div className="col l4 m4 s4 center">
+            <div className="col l3 m3 s3 center">
                 Date<br /><hr />
             </div>
-          </div>
               <div className="row">
-                <div className="col l12 m12 s12">
+                <div className="col l9 m9 s9">
                   <Collapsible>
               {this.transactionItems()}
                   </Collapsible>
                 </div>
-            </div>
+          </div>
         <br />
       </div>
     )

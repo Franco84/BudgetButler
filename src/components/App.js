@@ -16,11 +16,10 @@ class Home extends Component {
               <li><a href="collapsible.html">Goals</a></li>
               <li><a href="badges.html">Income</a></li>
               <li><a href="collapsible.html">Expenses</a></li>
-              <li><Logout /></li> 
+              <li><Logout /></li>
             </ul>
           </div>
         </nav>
-        <img className="left" role="presentation" src={require('../../img/Butler.png')} />
       {this.props.children}
       </div>
     );

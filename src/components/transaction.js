@@ -12,9 +12,11 @@ export default class Transaction extends Component {
   render(){
     return(
       <div>
+        <div className="row">
         <TransactionCreate />
         <TransactionList />
       </div>
+    </div>
     )
   }
 }

@@ -24,8 +24,7 @@ class TransactionCreate extends Component {
 	render() {
 		return(
 			<div>
-				<div className="row">
-					<div className="col l4 m4 s4">
+					<div className="col l3 m3 s3">
 				<h3> Add a transaction </h3>
 				<form onSubmit={this.handleSubmit.bind(this)}>
 					Name<input type='text' value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
@@ -35,8 +34,6 @@ class TransactionCreate extends Component {
 				</form>
 			</div>
 			</div>
-			</div>
-
 		)
 	}
 
