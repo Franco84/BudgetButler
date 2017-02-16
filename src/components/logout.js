@@ -13,7 +13,7 @@ class Logout extends Component {
 
 	render() {
 		return (
-			<Link to="/signin" onClick={this.handleClick.bind(this)}> Log Out </Link>
+			<Link to="/login" onClick={this.handleClick.bind(this)}> Log Out </Link>
 		)
 	}
 

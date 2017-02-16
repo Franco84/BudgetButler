@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { authenticateUser } from '../actions/index'
 import {connect} from 'react-redux'
+import {browserHistory} from 'react-router'
 
 class LogIn extends Component {
 
@@ -25,6 +26,7 @@ class LogIn extends Component {
                     <button className="btn blue darken-2" type="submit">Submit</button>
                     </form>
                     <h4>{this.props.currentUser}</h4>
+
             </div>
           </div>
           </div>

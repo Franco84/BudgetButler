@@ -18,6 +18,7 @@ export const createUser = (user) => {
 }
 
 export const fetchTransactions = (transaction) => {
+
   const response = axios.get(URL + 'transactions').then((transactionData) => {
     browserHistory.push('/transactions')
     return transactionData.data
@@ -46,12 +47,17 @@ export const authenticateUser = (user) => {
   const response = axios.post(URL + 'signin', {user}).then((userData) => {
     if (userData.data.jwt) {
       sessionStorage.setItem("jwt", userData.data.jwt)
-      browserHistory.push('/transactions')
       return userData.data.jwt
     } else {
       browserHistory.push('/login')
       return userData.data.message
     }
+  }).then(jwt => {
+    axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+    return jwt
+  }).then(jwt => {
+    browserHistory.push('/transactions')
+    return jwt
   })
 
   return {
@@ -70,9 +76,3 @@ export const logoutUser = () => {
     payload: []
   }
 }
-
-
-
-
-
-
