@@ -30,7 +30,7 @@ transactionInfo() {
   return (
     <span>
       <span style={{float:'left', width:"33%"}}>{this.props.transaction.name}</span>
-      <span style={{float: 'center', width:"33%"}}>{this.props.transaction.value.toFixed(2)}</span>
+      <span style={{float: 'center', width:"33%"}}>{(this.props.transaction.value).toFixed(2)}</span>
       <span style={{float: 'right', width:"33%"}}>{this.props.transaction.day}</span>
     </span>
   )
@@ -53,10 +53,6 @@ handleDelete(event){
   this.props.deleteTransaction(this.state.transaction)
 
 }
-
-
-
-
 
 render () {
     return(
