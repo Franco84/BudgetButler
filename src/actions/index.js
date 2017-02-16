@@ -17,10 +17,11 @@ export const createUser = (user) => {
   }
 }
 
-export const fetchTransactions = (transaction) => {
+export const fetchTransactions = (callback) => {
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.get(URL + 'transactions').then((transactionData) => {
     browserHistory.push('/transactions')
+    callback(transactionData.data)
     return transactionData.data
   })
 

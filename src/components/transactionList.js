@@ -11,7 +11,7 @@ import {Collapsible, CollapsibleItem} from 'react-materialize'
 class TransactionList extends Component {
 
   componentDidMount(){
-      this.props.fetchTransactions()
+    this.props.fetchTransactions(this.props.onMapComplete)
   }
 
   transactionItems(){
@@ -21,7 +21,8 @@ class TransactionList extends Component {
   render(){
     if (!this.props.transactions) {
       return ( <div>Loading...</div>) }
-    else return(
+    else
+    return(
 
       <div>
         <br />
