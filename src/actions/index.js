@@ -55,6 +55,17 @@ export const updateTransaction = (transaction) => {
   }
 }
 
+export const deleteTransaction = (transaction) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.delete(URL + `transactions/${transaction.id}`, {transaction}).then((transactionData) => {
+    return transactionData.data
+  })
+  return {
+    type: 'DELETE_TRANSACTION',
+    payload: response
+  }
+}
+
 export const authenticateUser = (user) => {
   const response = axios.post(URL + 'signin', {user}).then((userData) => {
     if (userData.data.jwt) {
@@ -89,4 +100,3 @@ export const logoutUser = () => {
     payload: []
   }
 }
-

@@ -10,7 +10,7 @@ import 'jquery-ui/ui/widgets/selectable';
 import ReactDOM from 'react-dom'
 import {Collapsible, CollapsibleItem} from 'react-materialize'
 import {connect} from 'react-redux'
-import { updateTransaction } from '../actions'
+import { updateTransaction, deleteTransaction } from '../actions'
 
 
 
@@ -19,6 +19,11 @@ class TransactionItem extends React.Component {
 constructor(props) {
     super(props)
     this.state = {transaction: {name: this.props.transaction.name, value: this.props.transaction.value, day: this.props.transaction.day, id: this.props.transaction.id}}
+}
+
+componentWillReceiveProps(next){
+  console.log("changing props===========");
+  this.setState({transaction: {name: next.transaction.name, value: next.transaction.value, day: next.transaction.day, id: next.transaction.id}})
 }
 
 transactionInfo() {
@@ -40,42 +45,55 @@ handleSubmit(event) {
   this.props.updateTransaction(this.state.transaction)
 }
 
+handleDelete(event){
+  // let ourRef = this.state.transaction.id
+  event.preventDefault()
+  // ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this.refs[ourRef]))
+  // debugger
+  this.props.deleteTransaction(this.state.transaction)
 
-
-form() {
-  return (
-    <form onSubmit={this.handleSubmit.bind(this)}>
-      <div className="row">
-        <div className="col l4 m4 s4">
-          <span style={{float:'center'}}>
-            <input className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
-          </span>
-        </div>
-        <div className="col l4 m4 s4">
-          <span style={{float:'center'}}>
-            <input className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
-          </span>
-        </div>
-        <div className="col l4 m4 s4">
-          <span style={{float:'center'}}>
-            <input className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/> 
-            </span>
-        </div>
-      </div>
-      <br />
-      <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
-  </form>
-  )
 }
+
+
+
+
 
 render () {
     return(
       <div>
-          <CollapsibleItem className="center" header={this.transactionInfo()}>
-               {this.form()}
+          <CollapsibleItem id={this.state.transaction.id} className="center" header={this.transactionInfo()}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
+              <div className="row">
+                <div className="col l4 m4 s4">
+                  <span style={{float:'center'}}>
+                    <input className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
+                  </span>
+                </div>
+                <div className="col l4 m4 s4">
+                  <span style={{float:'center'}}>
+                    <input className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
+                  </span>
+                </div>
+                <div className="col l4 m4 s4">
+                  <span style={{float:'center'}}>
+                    <input className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
+                    </span>
+                </div>
+              </div>
+              <br />
+              <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
+              <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} onClick={this.handleDelete.bind(this)}>Delete</button>
+          </form>
           </CollapsibleItem>
       </div>
     )
+  }
+}
+
+
+function mapStateToProps(state) {
+  return {
+    transactions: state.transactions
   }
 }
 
@@ -84,12 +102,13 @@ function mapDispatchToProps(dispatch){
     updateTransaction: function(transaction){
       let action = updateTransaction( transaction )
       dispatch( action )
+    },
+    deleteTransaction: function(transaction){
+      let action = deleteTransaction( transaction )
+      dispatch( action )
     }
   }
 }
 
 
-export default connect(null, mapDispatchToProps)(TransactionItem)
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionItem)
