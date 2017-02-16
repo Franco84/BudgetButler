@@ -18,7 +18,6 @@ class TransactionList extends Component {
   }
 
   render(){
-
     if (!this.props.transactions) {
       return ( <div>Loading...</div>) }
     else return(
@@ -26,13 +25,13 @@ class TransactionList extends Component {
       <div>
 
         <div className="row">
-          <div className="col l4 m4 s4">
+          <div className="col l4 m4 s4 center">
               Name<br /><hr />
           </div>
-          <div className="col l4 m4 s4">
+          <div className="col l4 m4 s4 center">
               Amount<br /><hr />
           </div>
-            <div className="col l4 m4 s4">
+            <div className="col l4 m4 s4 center">
                 Date<br /><hr />
             </div>
           </div>

@@ -3,9 +3,10 @@ export default (state=[], action) => {
     case "FETCH_TRANSACTIONS":
       return action.payload
     case "CREATE_TRANSACTION":
-        console.log('fetching tranactions');
         return action.payload
-    default: 
+    case "LOGOUT_USER":
+      return action.payload
+    default:
       return state
   }
 }

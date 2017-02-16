@@ -13,32 +13,49 @@ import {Collapsible, CollapsibleItem} from 'react-materialize'
 
 
 export default class TransactionItem extends React.Component {
-  componentDidMount() {
-    // debugger
-  }
 
+handleSubmit(event) {
+  // eventPreventDefault()
+}
+
+stuff() {
+  return (
+    <span>
+      <span style={{float:'left', width:"33%"}}>{this.props.transaction.name}</span>
+      <span style={{float: 'center', width:"33%"}}>{this.props.transaction.value.toFixed(2)}</span>
+      <span style={{float: 'right', width:"33%"}}>{this.props.transaction.day}</span>
+    </span>
+  )
+}
+
+form() {
+  return (
+    <form onSubmit={this.handleSubmit.bind(this, this.props.transaction.id)}>
+      <div className="row">
+        <div className="col l4 m4 s4">
+      <span style={{float:'center'}}><input className="center" type="text" placeholder={this.props.transaction.name} value={this.props.transaction.name} /></span>
+      </div>
+      <div className="col l4 m4 s4">
+      <span style={{float:'center'}}><input className="center" type="text" placeholder={this.props.transaction.value.toFixed(2)} value={this.props.transaction.value.toFixed(2)} /></span>
+      </div>
+      <div className="col l4 m4 s4">
+      <span style={{float:'center'}}><input className="center" type="text" placeholder={this.props.transaction.day} value={this.props.transaction.day} /></span>
+      </div>
+    </div>
+      <br />
+    <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
+    <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Delete</button>
+    </form>
+  )
+}
 
 render () {
     return(
       <div>
-      <div className="col l4 m4 s4">
+      <div className="col l12 m12 s12">
         <Collapsible className="borderless" accordian="true">
-          <CollapsibleItem header={this.props.transaction.name}>
-              <form><input type="text" placeholder={this.props.transaction.name} /><button type="submit">Submit</button></form>
-          </CollapsibleItem>
-        </Collapsible>
-      </div>
-      <div className="col l4 m4 s4">
-        <Collapsible accordian="true">
-          <CollapsibleItem header={this.props.transaction.value.toFixed(2)}>
-              <form><input type="text" placeholder={this.props.transaction.value.toFixed(2)} /><button type="submit">Submit</button></form>
-          </CollapsibleItem>
-        </Collapsible>
-      </div>
-      <div className="col l4 m4 s4">
-        <Collapsible accordian="true">
-          <CollapsibleItem header={this.props.transaction.day}>
-              <form><input type="text" placeholder={this.props.transaction.day} /><button type="submit">Submit</button></form>
+          <CollapsibleItem className="center" header={this.stuff()}>
+               {this.form()}
           </CollapsibleItem>
         </Collapsible>
       </div>
