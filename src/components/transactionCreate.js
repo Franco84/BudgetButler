@@ -1,12 +1,24 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { createTransaction } from '../actions'
+import {Collapsible, CollapsibleItem, Input} from 'react-materialize'
 
 class TransactionCreate extends Component {
-
 	constructor(props) {
 		super(props)
-		this.state = {transaction: {name: "", value: "", day: ""} } // NEED EXPENSE ID HERE ALSO
+		this.state = {transaction: {name: "", value: "", day: "", expense_id: ""} }
+		this.createDropdown = this.createDropdown.bind(this)
+	}
+
+	createDropdown() {
+			let a = this.props.expenses.map((expense) => {
+				return {id: expense.id, category: expense.category}
+			})
+
+			return(
+				a.map((a)=> {
+				return (<option value={a.id}>{a.category}</option>)
+			}))
 	}
 
 	handleInputChange(key, event) {
@@ -18,7 +30,7 @@ class TransactionCreate extends Component {
 	handleSubmit(event) {
 		event.preventDefault()
 		this.props.createTransaction( this.state.transaction )
-		this.setState({transaction: {name: "", value: "", day: ""} })
+		this.setState({transaction: {name: "", value: "", day: "", expense_id: ""} })
 	}
 
 	render() {
@@ -26,17 +38,25 @@ class TransactionCreate extends Component {
 			<div className= 'center'>
 				<h5> Add a transaction </h5>
 				<form onSubmit={this.handleSubmit.bind(this)}>
-					<input className="center" style={{width: "33%", float: "left"}} type='text' placeholder="Name" value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
-					<input className="center" style={{width: "33%", float: "center"}} type='number' placeholder="Amount" value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
-					<input className="center" style={{width: "33%", float: "right"}} type='date' placeholder="Date" className="datepicker" value={this.state.transaction.day} onChange={this.handleInputChange.bind(this, 'day')}/>
+					<input className="center" style={{width: "25%", float: "left"}} type='text' placeholder="Name" value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
+					<input className="center" style={{width: "25%", float: "center"}} type='number' placeholder="Amount" value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
+					<input className="center" style={{width: "25%", float: "right"}} type='date' placeholder="Date" className="datepicker" value={this.state.transaction.day} onChange={this.handleInputChange.bind(this, 'day')}/>
+					<Input className="center" style={{width: "25%", float: "right"}} type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleInputChange.bind(this, 'expense_id')} >
+						{this.createDropdown()}
+					</Input>
 					<button className="btn blue darken-2" type="submit" >Submit </button>
 				</form>
-			</div>	
+			</div>
 		)
 	}
 
 }
 
+function mapStateToProps(state){
+	return {
+		expenses: state.expenses
+	}
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -47,4 +67,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(TransactionCreate)
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionCreate)

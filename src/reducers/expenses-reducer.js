@@ -7,8 +7,8 @@ export default (state=[], action) => {
     case "UPDATE_EXPENSES":
       return action.payload
     case "DELETE_EXPENSES":
-      return action.payload 
-    case "CREATE_EXPENSE": 
+      return action.payload
+    case "CREATE_EXPENSE":
       return action.payload
     default:
       return state

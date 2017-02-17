@@ -29,21 +29,19 @@ constructor(props) {
 }
 
 findCategory() {
+
   let category = this.props.expenseList.filter((expense) => {
     if(expense.id === this.props.transaction.expense_id){
       return expense.category
     }
   })
-
-  let categoryItem = category.filter(String)
-  return categoryItem[0].category
+  return category[0].category
 }
 
 createDropdown() {
     let a = this.props.expenseList.map((expense) => {
       return {id: expense.id, category: expense.category}
     })
-
     return(
       a.map((a)=> {
       return (<option value={a.id}>{a.category}</option>)
@@ -66,7 +64,7 @@ transactionInfo() {
   return (
     <span>
       <span style={{float:'left', width:"25%"}}>{this.props.transaction.name}</span>
-      <span style={{float: 'center', width:"25%"}}>{this.findCategory()}</span>
+      <span style={{float: 'center', width:"25%"}}>{this.findCategory.call(this)}</span>
       <span style={{float: 'right', width:"25%"}}>{this.props.transaction.day}</span>
       <span style={{float: 'right', width:"25%"}}>{(this.props.transaction.value).toFixed(2)}</span>
     </span>
@@ -97,7 +95,7 @@ render () {
                     <input style={{width: "25%", float: "left"}} className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
                     <input style={{width: "25%", float: "center"}} className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
                     <input style={{width: "25%", float: "right"}} className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
-                    <Input className="center" style={{width: "25%", float: "right"}} type='select' label="Category" defaultValue='1' onChange={this.handleChange.bind(this, 'expense_id')} >
+                    <Input className="center" style={{width: "25%", float: "right"}} type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleChange.bind(this, 'expense_id')} >
                       {this.createDropdown()}
                     </Input>
                 </div>

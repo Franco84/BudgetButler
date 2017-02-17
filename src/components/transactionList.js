@@ -20,7 +20,7 @@ class TransactionList extends Component {
   }
 
   transactionItems(){
-    return this.props.transactions.map((tran, i) => { return <TransactionItem transaction={tran} expenseList={this.props.expenses} key={i}/>})
+    return this.props.transactions.map((tran, i) => {return <TransactionItem transaction={tran} expenseList={this.props.expenses} key={i}/>})
   }
 
   render(){

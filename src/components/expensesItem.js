@@ -10,7 +10,7 @@ import 'jquery-ui/ui/widgets/selectable';
 import ReactDOM from 'react-dom'
 import {Collapsible, CollapsibleItem} from 'react-materialize'
 import {connect} from 'react-redux'
-import { updateExpenses, deleteExpenses } from '../actions'
+import { updateExpenses, deleteExpenses, fetchTransactions } from '../actions'
 
 class ExpensesItem extends React.Component {
 
@@ -44,7 +44,6 @@ handleSubmit(event) {
 handleDelete(event){
   event.preventDefault()
   this.props.deleteExpenses(this.state.expense)
-
 }
 
 render () {

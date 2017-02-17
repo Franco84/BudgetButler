@@ -14,9 +14,6 @@ export default class Transaction extends Component {
   this.onMapComplete = this.onMapComplete.bind(this)
   }
 
-  componentDidMount() {
-  }
-
   onMapComplete(newValue) {
     this.setState({
       array: newValue.map((trans) => {
