@@ -7,6 +7,7 @@ import {Doughnut} from 'react-chartjs-2'
 
 
 export default class Transaction extends Component {
+
   constructor(props) {
   super(props)
   this.state = {array: [],names:[]}
@@ -25,7 +26,6 @@ export default class Transaction extends Component {
       })
     })
   }
-
 
   render(){
     return(
@@ -54,16 +54,3 @@ export default class Transaction extends Component {
     )
   }
 }
-
-
-// function mapStateToProps(state){
-//   return {
-//      tranactions: state.tranactions
-//  }
-// }
-//
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({createTransactions: createTransactions}, dispatch) // create, fetch, update, delete tranactions
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(Transaction)

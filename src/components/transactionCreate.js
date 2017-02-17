@@ -23,16 +23,15 @@ class TransactionCreate extends Component {
 
 	render() {
 		return(
-			<div className="center">
-				<br />
-				<h5> Add a Transaction </h5>
+			<div className= 'center'>
+				<h5> Add a transaction </h5>
 				<form onSubmit={this.handleSubmit.bind(this)}>
 					<input className="center" style={{width: "33%", float: "left"}} type='text' placeholder="Name" value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
 					<input className="center" style={{width: "33%", float: "center"}} type='number' placeholder="Amount" value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
 					<input className="center" style={{width: "33%", float: "right"}} type='date' placeholder="Date" className="datepicker" value={this.state.transaction.day} onChange={this.handleInputChange.bind(this, 'day')}/>
 					<button className="btn blue darken-2" type="submit" >Submit </button>
 				</form>
-			</div>
+			</div>	
 		)
 	}
 
