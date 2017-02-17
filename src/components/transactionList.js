@@ -14,6 +14,10 @@ class TransactionList extends Component {
     this.props.fetchTransactions(this.props.onMapComplete)
   }
 
+  componentWillReceiveProps(nextProps){
+    this.props.onMapComplete(nextProps.transactions)
+  }
+
   transactionItems(){
     return this.props.transactions.map((tran, i) => { return <TransactionItem transaction={tran} key={i}/>})
   }

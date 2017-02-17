@@ -31,16 +31,19 @@ export default class Transaction extends Component {
     return(
       <div>
         <div className="row">
-          <div className="col l6 m6 s6 offset-l6">
+          <div className="col l3 m6 s6">
+            <TransactionCreate />
+          </div>
+          <div className="col l6 m6 s6">
             <Doughnut data={{    labels: this.state.names,datasets: [
         {
             data: this.state.array,
             backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
+                "red",
+                "yellow",
                 "green",
-                "blue"
+                "blue",
+                "violet"
             ],
             hoverBackgroundColor: [
                 "#FF6384",
@@ -53,7 +56,6 @@ export default class Transaction extends Component {
           </div>
         </div>
         <div className="row">
-        <TransactionCreate />
         <TransactionList onMapComplete={this.onMapComplete} />
       </div>
     </div>
