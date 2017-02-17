@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
-import { fetchTransactions } from '../actions'
+import { fetchTransactions, fetchExpenses } from '../actions'
 import TransactionItem from './transactionItem'
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
@@ -11,6 +11,7 @@ import {Collapsible, CollapsibleItem} from 'react-materialize'
 class TransactionList extends Component {
 
   componentDidMount(){
+    this.props.fetchExpenses()
     this.props.fetchTransactions(this.props.onMapComplete)
   }
 
@@ -19,7 +20,7 @@ class TransactionList extends Component {
   }
 
   transactionItems(){
-    return this.props.transactions.map((tran, i) => { return <TransactionItem transaction={tran} key={i}/>})
+    return this.props.transactions.map((tran, i) => { return <TransactionItem transaction={tran} expenseList={this.props.expenses} key={i}/>})
   }
 
   render(){
@@ -33,9 +34,10 @@ class TransactionList extends Component {
 
         <div className="row">
           <div className="col l10 m10 s12 offset-l1 offset-m1 center">
-            <span className="center" style={{width: "33%", float: "left"}}>Name</span>
-            <span className="center" style={{width: "33%", float: "center"}}>Amount</span>
-            <span className="center" style={{width: "33%", float: "right"}}>Date</span>
+            <span className="center" style={{width: "25%", float: "left"}}>Name</span>
+            <span className="center" style={{width: "25%", float: "center"}}>Category</span>
+            <span className="center" style={{width: "25%", float: "right"}}>Date</span>
+            <span className="center" style={{width: "25%", float: "right"}}>Amount</span>
           <hr/>
           </div>
         </div>
@@ -57,12 +59,13 @@ class TransactionList extends Component {
 
 function mapStateToProps(state){
   return {
-     transactions: state.transactions
+     transactions: state.transactions,
+     expenses: state.expenses
  }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchTransactions: fetchTransactions}, dispatch) // create, fetch, update, delete tranactions
+  return bindActionCreators({fetchTransactions: fetchTransactions, fetchExpenses: fetchExpenses}, dispatch) // create, fetch, update, delete tranactions
 }
 //
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionList)

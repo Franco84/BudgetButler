@@ -7,7 +7,7 @@ const URL = "http://localhost:3000/api/v1/"
 export const fetchTransactions = (callback) => {
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.get(URL + 'transactions').then((transactionData) => {
-    browserHistory.push('/transactions')
+    // browserHistory.push('/transactions')
     callback(transactionData.data)
     return transactionData.data
   })
@@ -56,7 +56,7 @@ export const deleteTransaction = (transaction) => {
 export const fetchExpenses = () => {
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.get(URL + 'expenses').then((expensesData) => {
-    browserHistory.push('/expenses')
+    // browserHistory.push('/expenses')
     return expensesData.data
   })
 

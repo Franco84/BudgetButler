@@ -8,7 +8,7 @@ import 'jquery-ui/themes/base/selectable.css';
 import 'jquery-ui/ui/core';
 import 'jquery-ui/ui/widgets/selectable';
 import ReactDOM from 'react-dom'
-import {Collapsible, CollapsibleItem} from 'react-materialize'
+import {Collapsible, CollapsibleItem, Input} from 'react-materialize'
 import {connect} from 'react-redux'
 import { updateTransaction, deleteTransaction } from '../actions'
 
@@ -21,6 +21,29 @@ constructor(props) {
     this.state = {transaction: {name: this.props.transaction.name, value: this.props.transaction.value, day: this.props.transaction.day, id: this.props.transaction.id}}
 }
 
+findCategory() {
+  let category = this.props.expenseList.filter((expense) => {
+    if(expense.id === this.props.transaction.expense_id){
+      return expense.category
+    }
+  })
+
+  let categoryItem = category.filter(String)
+  return categoryItem[0].category
+}
+
+createDropdown() {
+    let a = this.props.expenseList.map((expense) => {
+      return {id: expense.id, category: expense.category}
+    })
+
+    return(
+      a.map((a)=> {
+      return (<option value={a.id}>{a.category}</option>)
+    }))
+}
+
+
 componentWillReceiveProps(next){
   this.setState({transaction: {name: next.transaction.name, value: next.transaction.value, day: next.transaction.day, id: next.transaction.id}})
 }
@@ -28,9 +51,10 @@ componentWillReceiveProps(next){
 transactionInfo() {
   return (
     <span>
-      <span style={{float:'left', width:"33%"}}>{this.props.transaction.name}</span>
-      <span style={{float: 'center', width:"33%"}}>{(this.props.transaction.value).toFixed(2)}</span>
-      <span style={{float: 'right', width:"33%"}}>{this.props.transaction.day}</span>
+      <span style={{float:'left', width:"25%"}}>{this.props.transaction.name}</span>
+      <span style={{float: 'center', width:"25%"}}>{this.findCategory()}</span>
+      <span style={{float: 'right', width:"25%"}}>{this.props.transaction.day}</span>
+      <span style={{float: 'right', width:"25%"}}>{(this.props.transaction.value).toFixed(2)}</span>
     </span>
   )
 }
@@ -45,10 +69,7 @@ handleSubmit(event) {
 }
 
 handleDelete(event){
-  // let ourRef = this.state.transaction.id
   event.preventDefault()
-  // ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(this.refs[ourRef]))
-  // debugger
   this.props.deleteTransaction(this.state.transaction)
 
 }
@@ -60,9 +81,12 @@ render () {
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="row">
                 <div className="center">
-                    <input style={{float:'left', width:"33%"}} className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
-                    <input style={{float:'center', width:"33%"}} className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
-                    <input style={{float:'right', width:"33%"}} className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
+                    <input style={{width: "25%", float: "left"}} className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
+                    <input style={{width: "25%", float: "center"}} className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
+                    <input style={{width: "25%", float: "right"}} className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
+                    <Input className="center" style={{width: "25%", float: "right"}} type='select' label="Category" defaultValue='1'>
+                      {this.createDropdown()}
+                    </Input>
                 </div>
               <br />
               <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
