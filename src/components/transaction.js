@@ -7,8 +7,7 @@ import {Doughnut} from 'react-chartjs-2'
 
 
 export default class Transaction extends Component {
-<<<<<<< HEAD
-=======
+
   constructor(props) {
   super(props)
   this.state = {array: [],names:[]}
@@ -27,8 +26,6 @@ export default class Transaction extends Component {
       })
     })
   }
-
->>>>>>> b0208ab7cc74bf0d1ba540376107758f572f04bc
 
   render(){
     return(

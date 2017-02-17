@@ -4,17 +4,7 @@ import {browserHistory} from 'react-router'
 const URL = "http://localhost:3000/api/v1/"
 
 
-<<<<<<< HEAD
-export const fetchTransactions = () => {
-=======
-  return {
-    type: 'CREATE_USER',
-    payload: response
-  }
-}
-
 export const fetchTransactions = (callback) => {
->>>>>>> b0208ab7cc74bf0d1ba540376107758f572f04bc
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.get(URL + 'transactions').then((transactionData) => {
     browserHistory.push('/transactions')

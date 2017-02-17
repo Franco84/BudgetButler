@@ -12,13 +12,9 @@ export default(
   <Route path="/" component={App}>
     <Route path="/home" component={Home}></Route>
     <Route path="login" component={LogIn}></Route>
-<<<<<<< HEAD
-    <Route path="transactions" component={Transaction}></Route>
+    <Route path="transactions" component={Transaction}><IndexRoute component={transactionList} /></Route>
     <Route path="signup" component={UserSignUp}></Route>
     <Route path="expenses" component={Expenses}></Route>
-=======
-    <Route path="transactions" component={Transaction}><IndexRoute component={transactionList} /></Route>
->>>>>>> b0208ab7cc74bf0d1ba540376107758f572f04bc
   </Route>
 )
 
