@@ -59,28 +59,18 @@ render () {
           <CollapsibleItem id={this.state.transaction.id} className="center" header={this.transactionInfo()}>
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="row">
-                <div className="col l4 m4 s4">
-                  <span style={{float:'center'}}>
-                    <input className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
-                  </span>
+                <div className="center">
+                    <input style={{float:'left', width:"33%"}} className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
+                    <input style={{float:'center', width:"33%"}} className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
+                    <input style={{float:'right', width:"33%"}} className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
                 </div>
-                <div className="col l4 m4 s4">
-                  <span style={{float:'center'}}>
-                    <input className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
-                  </span>
-                </div>
-                <div className="col l4 m4 s4">
-                  <span style={{float:'center'}}>
-                    <input className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
-                    </span>
-                </div>
-              </div>
               <br />
               <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
               <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} onClick={this.handleDelete.bind(this)}>Delete</button>
+            </div>
           </form>
           </CollapsibleItem>
-      </div>
+        </div>
     )
   }
 }

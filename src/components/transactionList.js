@@ -30,24 +30,26 @@ class TransactionList extends Component {
 
       <div>
         <br />
-          <div className="col l3 m3 s3 center">
-              Name<br /><hr />
+
+        <div className="row">
+          <div className="col l10 m10 s12 offset-l1 offset-m1 center">
+            <span className="center" style={{width: "33%", float: "left"}}>Name</span>
+            <span className="center" style={{width: "33%", float: "center"}}>Amount</span>
+            <span className="center" style={{width: "33%", float: "right"}}>Date</span>
+          <hr/>
           </div>
-          <div className="col l3 m3 s3 center">
-              Amount<br /><hr />
-          </div>
-            <div className="col l3 m3 s3 center">
-                Date<br /><hr />
+        </div>
+
+          <div className="row">
+            <div className="col l10 m10 s9 offset-l1 offset-m1 center">
+              <Collapsible>
+                {this.transactionItems()}
+              </Collapsible>
             </div>
-              <div className="row">
-                <div className="col l9 m9 s9">
-                  <Collapsible>
-              {this.transactionItems()}
-                  </Collapsible>
-                </div>
           </div>
-        <br />
-      </div>
+
+          <br />
+        </div>
     )
   }
 }
