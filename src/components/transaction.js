@@ -30,34 +30,26 @@ export default class Transaction extends Component {
   render(){
     return(
       <div>
+
         <div className="row">
-          <div className="col l3 m6 s6">
+          <div className="col l10 m10 s12 offset-l1 offset-m1">
             <TransactionCreate />
           </div>
-          <div className="col l6 m6 s6">
-            <Doughnut data={{    labels: this.state.names,datasets: [
-        {
-            data: this.state.array,
-            backgroundColor: [
-                "red",
-                "yellow",
-                "green",
-                "blue",
-                "violet"
-            ],
-            hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
-            ]
-        }]
+        </div>
 
-      }} />
+        <div className="row">
+          <div className="col l4 m4 s12 offset-l4 offset-m4">
+            <Doughnut data={{labels: this.state.names,datasets:[
+              {data: this.state.array,
+            backgroundColor: ["red","yellow","green","blue","violet"],
+            hoverBackgroundColor: ["#FF6384","#36A2EB","#FFCE56"]}]
+            }} />
           </div>
         </div>
-        <div className="row">
+
+
         <TransactionList onMapComplete={this.onMapComplete} />
-      </div>
+
     </div>
     )
   }
