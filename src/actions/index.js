@@ -32,6 +32,7 @@ export const createTransaction = (transaction) => {
 }
 
 export const updateTransaction = (transaction) => {
+  debugger
   axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.patch(URL + `transactions/${transaction.id}`, {transaction}).then((transactionData) => {
     return transactionData.data
