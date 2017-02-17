@@ -22,7 +22,6 @@ constructor(props) {
 }
 
 componentWillReceiveProps(next){
-  console.log("changing props===========");
   this.setState({transaction: {name: next.transaction.name, value: next.transaction.value, day: next.transaction.day, id: next.transaction.id}})
 }
 
@@ -87,12 +86,6 @@ render () {
 }
 
 
-function mapStateToProps(state) {
-  return {
-    transactions: state.transactions
-  }
-}
-
 function mapDispatchToProps(dispatch){
     return {
     updateTransaction: function(transaction){
@@ -107,4 +100,4 @@ function mapDispatchToProps(dispatch){
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(TransactionItem)
+export default connect(null, mapDispatchToProps)(TransactionItem)

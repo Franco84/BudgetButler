@@ -3,21 +3,8 @@ import {browserHistory} from 'react-router'
 
 const URL = "http://localhost:3000/api/v1/"
 
-export const createUser = (user) => {
-  const response = axios.post(URL + 'signup', user).then((userData) => {
-    sessionStorage.setItem("jwt", userData.data.jwt)
-    sessionStorage.setItem("name", userData.data.name)
-    browserHistory.push('/')
-    return userData
-  })
 
-  return {
-    type: 'CREATE_USER',
-    payload: response
-  }
-}
-
-export const fetchTransactions = (transaction) => {
+export const fetchTransactions = () => {
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   const response = axios.get(URL + 'transactions').then((transactionData) => {
     browserHistory.push('/transactions')
@@ -29,7 +16,6 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
     payload: response
   }
 }
-
 
 export const createTransaction = (transaction) => {
   axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
@@ -62,6 +48,68 @@ export const deleteTransaction = (transaction) => {
   })
   return {
     type: 'DELETE_TRANSACTION',
+    payload: response
+  }
+}
+
+export const fetchExpenses = () => {
+axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.get(URL + 'expenses').then((expensesData) => {
+    browserHistory.push('/expenses')
+    return expensesData.data
+  })
+
+  return {
+    type: 'FETCH_EXPENSES',
+    payload: response
+  }
+}
+
+export const createExpense = (expense) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  let headers = sessionStorage.getItem('jwt');
+  const response = axios.post(URL + 'expenses', {expense}).then((expenseData) => {
+    return expenseData.data
+  })
+
+  return {
+    type: 'CREATE_EXPENSE',
+    payload: response
+  }
+}
+
+export const updateExpenses = (expense) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.patch(URL + `expenses/${expense.id}`, {expense}).then((expensesData) => {
+  return expensesData.data
+  })
+  return {
+    type: 'UPDATE_EXPENSES',
+    payload: response
+  }
+}
+
+export const deleteExpenses = (expense) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.delete(URL + `expenses/${expense.id}`, {expense}).then((expensesData) => {
+    return expensesData.data
+  })
+  return {
+    type: 'DELETE_EXPENSES',
+    payload: response
+  }
+}
+
+export const createUser = (user) => {
+  const response = axios.post(URL + 'signup', user).then((userData) => {
+    sessionStorage.setItem("jwt", userData.data.jwt)
+    sessionStorage.setItem("name", userData.data.name)
+    browserHistory.push('/')
+    return userData
+  })
+
+  return {
+    type: 'CREATE_USER',
     payload: response
   }
 }

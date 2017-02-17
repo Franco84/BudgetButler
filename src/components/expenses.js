@@ -1,17 +1,17 @@
 import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
-import TransactionList from './transactionList'
-import TransactionCreate from './transactionCreate'
+import ExpensesList from './expensesList'
+import ExpensesCreate from './expensesCreate'
 
-export default class Transaction extends Component {
+export default class Expenses extends Component {
 
   render(){
     return(
       <div>
         <div className="row">
-        <TransactionCreate />
-        <TransactionList />
+        	<ExpensesCreate />
+        	<ExpensesList />
       </div>
     </div>
     )

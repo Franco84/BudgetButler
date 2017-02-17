@@ -24,8 +24,8 @@ class TransactionCreate extends Component {
 	render() {
 		return(
 			<div>
-					<div className="col l3 m3 s3">
-				<h3> Add a transaction </h3>
+				<div className="col l3 m3 s3">
+				<h3> Add A Transaction </h3>
 				<form onSubmit={this.handleSubmit.bind(this)}>
 					Name<input type='text' value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
 					Value <input type='number' value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
