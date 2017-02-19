@@ -7,6 +7,7 @@ import Expenses from './components/expenses'
 import Home from './components/Home'
 import LogIn from './components/login'
 import transactionList from './components/transactionList'
+import Income from './components/income'
 
 export default(
   <Route path="/" component={App}>
@@ -15,6 +16,7 @@ export default(
     <Route path="transactions" component={Transaction}><IndexRoute component={transactionList} /></Route>
     <Route path="signup" component={UserSignUp}></Route>
     <Route path="expenses" component={Expenses}></Route>
+    <Route path="income" component={Income}></Route>
   </Route>
 )
 
