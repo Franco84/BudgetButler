@@ -29,7 +29,6 @@ constructor(props) {
 }
 
 findCategory() {
-
   let category = this.props.expenseList.filter((expense) => {
     if(expense.id === this.props.transaction.expense_id){
       return expense.category

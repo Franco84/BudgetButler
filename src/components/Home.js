@@ -9,7 +9,7 @@ class Home extends Component {
         <h3>You need a Budget Butler!</h3>
         <div className="center">
           <button><Link to="/signup">Sign Up</Link></button>
-          <button><Link to="/login">Log IN</Link></button>
+          <button><Link to="/login">Log In</Link></button>
         </div>
       </div>
     );
