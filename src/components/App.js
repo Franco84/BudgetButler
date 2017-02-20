@@ -1,28 +1,18 @@
 import React, { Component } from 'react';
-import UserSignUp from './user-sign-up'
-import {Link} from 'react-router'
-import Logout from './logout'
+import Navbar from './navbar'
+import { Link } from 'react-router'
 
-class Home extends Component {
+class App extends Component {
   render() {
     return (
       <div>
-        <nav>
-          <div className="nav-wrapper blue darken-2">
-            <Link to="/home" className="brand-logo center">Budget Butler</Link>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><Link to="/login">Log In</Link></li>
-              <li><Link to="/transactions">Transactions</Link></li>
-              <li><Link to="/income">Income</Link></li>
-              <li><Link to="/expenses">Expenses</Link></li>              
-              <li><Logout /></li>
-            </ul>
-          </div>
-        </nav>
-      {this.props.children}
+        <Navbar />
+        <div>
+          { this.props.children }
+        </div>
       </div>
     );
   }
 }
 
-export default Home;
+export default App;
