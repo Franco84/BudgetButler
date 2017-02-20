@@ -29,12 +29,14 @@ checkLogin (){
 
 render(){
   return (
-    <nav>
-      <div className="nav-wrapper blue darken-2">
-        <Link to="/" className="brand-logo center">Budget Butler</Link>
-      {this.checkLogin()}
-      </div>
-    </nav>
+    <div className="navbar-fixed">
+      <nav>
+        <div className="nav-wrapper black">
+          <Link to="/" className="brand-logo center">Budget Butler</Link>
+        {this.checkLogin()}
+        </div>
+      </nav>
+    </div>
     )
   }
 }
