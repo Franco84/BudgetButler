@@ -1,13 +1,11 @@
 import axios from 'axios'
 import {browserHistory} from 'react-router'
 
-const URL = "http://localhost:3000/api/v1/"
-
+axios.defaults.baseURL = 'http://localhost:3000/api/v1'
+axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
 export const fetchTransactions = (callback) => {
-axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.get(URL + 'transactions').then((transactionData) => {
-    // browserHistory.push('/transactions')
+  const response = axios.get('/transactions').then((transactionData) => {
     callback(transactionData.data)
     return transactionData.data
   })
@@ -19,10 +17,8 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
 }
 
 export const createTransaction = (transaction) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  let headers = sessionStorage.getItem('jwt');
-  const response = axios.post(URL + 'transactions', {transaction}).then((transactionData) => {
-    return transactionData.data
+  const response = axios.post('/transactions', {transaction}).then((transactionData) => {
+  return transactionData.data
   })
 
   return {
@@ -32,10 +28,10 @@ export const createTransaction = (transaction) => {
 }
 
 export const updateTransaction = (transaction) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.patch(URL + `transactions/${transaction.id}`, {transaction}).then((transactionData) => {
-    return transactionData.data
+  const response = axios.patch(`/transactions/${transaction.id}`, {transaction}).then((transactionData) => {
+  return transactionData.data
   })
+
   return {
     type: 'UPDATE_TRANSACTION',
     payload: response
@@ -43,10 +39,10 @@ export const updateTransaction = (transaction) => {
 }
 
 export const deleteTransaction = (transaction) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.delete(URL + `transactions/${transaction.id}`, {transaction}).then((transactionData) => {
-    return transactionData.data
+  const response = axios.delete(`/transactions/${transaction.id}`, {transaction}).then((transactionData) => {
+  return transactionData.data
   })
+
   return {
     type: 'DELETE_TRANSACTION',
     payload: response
@@ -54,10 +50,8 @@ export const deleteTransaction = (transaction) => {
 }
 
 export const fetchExpenses = () => {
-axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.get(URL + 'expenses').then((expensesData) => {
-    // browserHistory.push('/expenses')
-    return expensesData.data
+  const response = axios.get('/expenses').then((expensesData) => {
+  return expensesData.data
   })
 
   return {
@@ -67,10 +61,8 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
 }
 
 export const createExpense = (expense) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  let headers = sessionStorage.getItem('jwt');
-  const response = axios.post(URL + 'expenses', {expense}).then((expenseData) => {
-    return expenseData.data
+  const response = axios.post('/expenses', {expense}).then((expenseData) => {
+  return expenseData.data
   })
 
   return {
@@ -80,10 +72,10 @@ export const createExpense = (expense) => {
 }
 
 export const updateExpenses = (expense) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.patch(URL + `expenses/${expense.id}`, {expense}).then((expensesData) => {
+  const response = axios.patch(`/expenses/${expense.id}`, {expense}).then((expensesData) => {
   return expensesData.data
   })
+
   return {
     type: 'UPDATE_EXPENSES',
     payload: response
@@ -91,10 +83,10 @@ export const updateExpenses = (expense) => {
 }
 
 export const deleteExpenses = (expense) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.delete(URL + `expenses/${expense.id}`, {expense}).then((expensesData) => {
+  const response = axios.delete(`/expenses/${expense.id}`, {expense}).then((expensesData) => {
     return expensesData.data
   })
+
   return {
     type: 'DELETE_EXPENSES',
     payload: response
@@ -102,10 +94,11 @@ export const deleteExpenses = (expense) => {
 }
 
 export const createUser = (user) => {
-  const response = axios.post(URL + 'signup', user).then((userData) => {
+  const response = axios.post('/signup', user).then((userData) => {
     sessionStorage.setItem("jwt", userData.data.jwt)
     sessionStorage.setItem("name", userData.data.name)
-    browserHistory.push('/')
+    axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
+    browserHistory.push('/login')
     return userData
   })
 
@@ -116,21 +109,11 @@ export const createUser = (user) => {
 }
 
 export const authenticateUser = (user) => {
-  const response = axios.post(URL + 'signin', {user}).then((userData) => {
-    if (userData.data.jwt) {
-      console.log(' ')
-      sessionStorage.setItem("jwt", userData.data.jwt)
-      return userData.data.jwt
-    } else {
-      browserHistory.push('/login')
-      return userData.data.message
-    }
-  }).then(jwt => {
-    axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-    return jwt
-  }).then(jwt => {
+  const response = axios.post('/signin', {user}).then((userData) => {
+    sessionStorage.setItem("jwt", userData.data.jwt)
+    axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
     browserHistory.push('/transactions')
-    return jwt
+    return userData
   })
 
   return {
@@ -141,7 +124,6 @@ export const authenticateUser = (user) => {
 
 
 export const logoutUser = () => {
-
   sessionStorage.removeItem('jwt')
 
   return {
