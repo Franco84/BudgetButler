@@ -11,31 +11,11 @@ import {Pie} from 'react-chartjs-2'
 class ExpensesList extends Component {
 
   componentDidMount(){
-    this.props.fetchIncome()
     this.props.fetchExpenses()
   }
 
   expensesItems(){
     return this.props.expenses.map((exp, i) => { return <ExpensesItem expense={exp} key={i}/>})
-  }
-
-  addIncome() {
-    let amount = 0 
-    this.props.income.map((income) => {
-      amount += income.amount
-      return income
-    })
-    debugger
-    return amount 
-  }
-
-  addExpenses() {
-    let amount = 0 
-    this.props.expenses.map((expense) => {
-      amount += expense.budget
-      return expense
-    })
-    return amount 
   }
 
   render(){
@@ -58,9 +38,6 @@ class ExpensesList extends Component {
             </div>
           </div>
         <br />
-        {this.addIncome()} 
-        <br />
-        {this.addExpenses()}
       </div>
     )
   }
