@@ -146,8 +146,9 @@ export const deleteExpenses = (expense) => {
 export const createUser = (user) => {
   const response = axios.post('/signup', user).then((userData) => {
     sessionStorage.setItem("jwt", userData.data.jwt)
+    sessionStorage.setItem("name", userData.data.name)
     axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
-    browserHistory.push('/transactions')
+    browserHistory.push('/login')
     return userData
   })
 
