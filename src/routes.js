@@ -21,10 +21,8 @@ export default(
     <IndexRoute component={Home} />
     <Route path="signup" component={UserSignUp}></Route>
     <Route path="login" component={LogIn}></Route>
-    <Route path="transactions" component={Transaction} onEnter={requireLogin}>
-      <IndexRoute component={transactionList} onEnter={requireLogin} />
-    </Route>
-    <Route path="expenses" component={Expenses} onEnter={requireLogin}>
-    </Route>
+    <Route path="transactions" component={Transaction} onEnter={requireLogin}></Route>
+    <Route path="expenses" component={Expenses} onEnter={requireLogin}></Route>
+    <Route path="income" component={Income} onEnter={requireLogin}></Route>
   </Route>
 )

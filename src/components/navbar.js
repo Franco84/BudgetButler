@@ -12,8 +12,7 @@ checkLogin (){
       <ul id="nav-mobile" className="logged-in right hide-on-med-and-down">
         <li><Link to="/transactions">Transactions</Link></li>
         <li><Link to="/expenses">Expenses</Link></li>
-        <li><a href="collapsible.html">Goals</a></li>
-        <li><a href="badges.html">Income</a></li>
+        <li><Link to="/income">Income</Link></li>
         <li><Logout /></li>
       </ul>
     )

@@ -18,6 +18,9 @@ class LogIn extends Component {
           <div className="row">
             <div className="col l6 m12 s12 offset-l2">
               <br />
+              <div style={{color: 'red'}}> 
+                {this.props.currentUser}
+              </div>   
               <form onSubmit={this.handleSubmit.bind(this)}>
                 <label htmlFor="email">Email</label>
                 <input placeholder="Email" id="email" type="text" ref="email" className="validate" />

@@ -49,9 +49,9 @@ export const deleteTransaction = (transaction) => {
   }
 }
 
+
 export const fetchIncome = () => {
-axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.get(URL + 'incomes').then((incomeData) => {
+  const response = axios.get('/incomes').then((incomeData) => {
     return incomeData.data
   })
 
@@ -62,9 +62,8 @@ axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
 }
 
 export const createIncome = (income) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
   let headers = sessionStorage.getItem('jwt');
-  const response = axios.post(URL + 'incomes', {income}).then((incomeData) => {
+  const response = axios.post('/incomes', {income}).then((incomeData) => {
     return incomeData.data
   })
 
@@ -75,8 +74,7 @@ export const createIncome = (income) => {
 }
 
 export const updateIncome = (income) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.patch(URL + `incomes/${income.id}`, {income}).then((incomeData) => {
+  const response = axios.patch(`/incomes/${income.id}`, {income}).then((incomeData) => {
     return incomeData.data
   })
   return {
@@ -86,8 +84,7 @@ export const updateIncome = (income) => {
 }
 
 export const deleteIncome = (income) => {
-  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
-  const response = axios.delete(URL + `incomes/${income.id}`, {income}).then((incomeData) => {
+  const response = axios.delete(`/incomes/${income.id}`, {income}).then((incomeData) => {
     return incomeData.data
   })
   return {
@@ -159,10 +156,15 @@ export const authenticateUser = (user) => {
   const response = axios.post('/signin', {user}).then((userData) => {
     sessionStorage.setItem("jwt", userData.data.jwt)
     axios.defaults.headers.common['AUTHORIZATION'] = userData.data.jwt
-    browserHistory.push('/transactions')
-    return userData
-  })
-
+    if (sessionStorage.jwt === 'undefined'){
+      browserHistory.push('/login')
+      return "The username or password is incorrect"
+    } 
+    else {    
+      browserHistory.push('/transactions')
+      return userData}
+    })
+    
   return {
     type: 'AUTHENTICATE_USER',
     payload: response
