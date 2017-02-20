@@ -7,6 +7,7 @@ import Expenses from './components/expenses'
 import Home from './components/home'
 import LogIn from './components/login'
 import transactionList from './components/transactionList'
+import Income from './components/income'
 
 
 const requireLogin = (nextState, replace) => {
@@ -20,7 +21,6 @@ export default(
     <IndexRoute component={Home} />
     <Route path="signup" component={UserSignUp}></Route>
     <Route path="login" component={LogIn}></Route>
-
     <Route path="transactions" component={Transaction} onEnter={requireLogin}>
       <IndexRoute component={transactionList} onEnter={requireLogin} />
     </Route>
