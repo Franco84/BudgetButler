@@ -37,17 +37,17 @@ class TransactionCreate extends Component {
 
 	render() {
 			return(
-				<div className= 'center'>
-					<h5> Add a transaction </h5>
+				<div className='center'>
 					<form onSubmit={this.handleSubmit.bind(this)}>
-						<input className="center" style={{width: "25%", float: "left"}} type='text' placeholder="Name" value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
-						<input className="center" style={{width: "25%", float: "center"}} type='number' placeholder="Amount" value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
-						<input className="center" style={{width: "25%", float: "right"}} type='date' placeholder="Date" className="datepicker" value={this.state.transaction.day} onChange={this.handleInputChange.bind(this, 'day')}/>
-						<Input className="center" style={{width: "25%", float: "right"}} type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleInputChange.bind(this, 'expense_id')} >
-							<option selected>Select:</option>
+						<input className="center"  type='text' placeholder="Name" value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
+						<input className="center"  type='number' placeholder="Amount" value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
+						<input className="center"  type='date' placeholder="Date" className="datepicker" value={this.state.transaction.day} onChange={this.handleInputChange.bind(this, 'day')}/>
+						<Input className="center"  type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleInputChange.bind(this, 'expense_id')} >
+							<option selected>Select Category:</option>
 							{this.createDropdown()}
 						</Input>
-						<button className="btn blue darken-2" type="submit" >Submit </button>
+						<br />
+						<button className="btn black" type="submit" >Submit</button>
 					</form>
 				</div>
 			)
