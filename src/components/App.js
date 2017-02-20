@@ -14,8 +14,7 @@ class Home extends Component {
               <li><Link to="/login">Log In</Link></li>
               <li><Link to="/transactions">Transactions</Link></li>
               <li><Link to="/expenses">Expenses</Link></li>
-              <li><a href="collapsible.html">Goals</a></li>
-              <li><a href="badges.html">Income</a></li>
+              <li><Link to="/income">Income</Link></li>          
               <li><Logout /></li>
             </ul>
           </div>
