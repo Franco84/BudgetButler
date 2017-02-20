@@ -5,7 +5,8 @@ axios.defaults.baseURL = 'http://localhost:3000/api/v1'
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
 export const fetchTransactions = (callback) => {
-  const response = axios.get('/transactions').then((transactionData) => {
+axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.get(URL + 'transactions').then((transactionData) => {
     callback(transactionData.data)
     return transactionData.data
   })
@@ -49,9 +50,58 @@ export const deleteTransaction = (transaction) => {
   }
 }
 
+export const fetchIncome = () => {
+axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.get(URL + 'incomes').then((incomeData) => {
+    return incomeData.data
+  })
+
+  return {
+    type: 'FETCH_INCOME',
+    payload: response
+  }
+}
+
+export const createIncome = (income) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  let headers = sessionStorage.getItem('jwt');
+  const response = axios.post(URL + 'incomes', {income}).then((incomeData) => {
+    return incomeData.data
+  })
+
+  return {
+    type: 'CREATE_INCOME',
+    payload: response
+  }
+}
+
+export const updateIncome = (income) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.patch(URL + `incomes/${income.id}`, {income}).then((incomeData) => {
+    return incomeData.data
+  })
+  return {
+    type: 'UPDATE_INCOME',
+    payload: response
+  }
+}
+
+export const deleteIncome = (income) => {
+  axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.delete(URL + `incomes/${income.id}`, {income}).then((incomeData) => {
+    return incomeData.data
+  })
+  return {
+    type: 'DELETE_INCOME',
+    payload: response
+  }
+}
+
+
 export const fetchExpenses = () => {
-  const response = axios.get('/expenses').then((expensesData) => {
-  return expensesData.data
+axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt');
+  const response = axios.get(URL + 'expenses').then((expensesData) => {
+    return expensesData.data
   })
 
   return {
