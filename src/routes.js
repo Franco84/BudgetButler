@@ -1,10 +1,10 @@
 import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 import App from './components/App'
-import UserSignUp from './components/user-sign-up'
+import UserSignUp from './components/signup'
 import Transaction from './components/transaction'
 import Expenses from './components/expenses'
-import Home from './components/Home'
+import Home from './components/home'
 import LogIn from './components/login'
 import transactionList from './components/transactionList'
 import Income from './components/income'
@@ -18,7 +18,7 @@ const requireLogin = (nextState, replace) => {
 
 export default(
   <Route path="/" component={App}>
-    <Route path="/home" component={Home}></Route>
+    <IndexRoute component={Home} />
     <Route path="signup" component={UserSignUp}></Route>
     <Route path="login" component={LogIn}></Route>
     <Route path="transactions" component={Transaction} onEnter={requireLogin}>
