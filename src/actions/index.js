@@ -16,6 +16,16 @@ export const fetchTransactions = (callback) => {
   }
 }
 
+export const fetchTransactionByDate = (month_id) => {
+  const response = axios.post(`/month/${month_id}`, {month_id}).then((monthData) => {
+    return monthData.data
+  })
+  return {
+    type: 'FETCH_TRANSACTIONS_MONTH',
+    payload: response
+  }
+}
+
 export const createTransaction = (transaction) => {
   const response = axios.post('/transactions', {transaction}).then((transactionData) => {
   return transactionData.data
