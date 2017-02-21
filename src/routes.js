@@ -6,7 +6,6 @@ import Transaction from './components/transaction'
 import Expenses from './components/expenses'
 import Home from './components/home'
 import LogIn from './components/login'
-import transactionList from './components/transactionList'
 import Income from './components/income'
 
 

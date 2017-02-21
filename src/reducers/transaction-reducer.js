@@ -10,6 +10,8 @@ export default (state=[], action) => {
       return action.payload
     case "DELETE_TRANSACTION":
       return action.payload
+    case "FETCH_TRANSACTIONS_MONTH":
+      return action.payload
     default:
       return state
   }

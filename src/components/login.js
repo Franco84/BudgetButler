@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { authenticateUser } from '../actions/index'
 import {connect} from 'react-redux'
-import {browserHistory} from 'react-router'
 
 class LogIn extends Component {
 

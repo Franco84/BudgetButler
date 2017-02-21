@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { createTransaction } from '../actions'
-import {Collapsible, CollapsibleItem, Input} from 'react-materialize'
+import {Input} from 'react-materialize'
 
 class TransactionCreate extends Component {
 	constructor(props) {

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
 import {Materialize} from 'react-materialize'
-import $ from 'jquery';
-import { Parallax } from 'materialize-css';
+
 
 
 class Home extends Component {
@@ -29,7 +27,7 @@ class Home extends Component {
               <div className="col l3 m3 s3 offset-l9 offset-m9 offset-s9">
                 <div className="landingButton">See how you can take control..</div>
                 <br />
-                <img className='pulse-button imgLanding' src={require('../../img/down.svg')} />
+                <img className='pulse-button imgLanding' src={require('../../img/down.svg')} role="presentation"/>
               </div>
             </div>
        </div>
@@ -46,7 +44,7 @@ class Home extends Component {
           </div>
 
           <div className="col l4 m4 s4 center landingpad offset-l1 offset-m1 offset-s1">
-            <img className="responsive-img" src={require('../../img/transactionchart.png')} />
+            <img className="responsive-img" src={require('../../img/transactionchart.png')} role="presentation"/>
           </div>
 
         </div>

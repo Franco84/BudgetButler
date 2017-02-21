@@ -49,6 +49,17 @@ export const deleteTransaction = (transaction) => {
   }
 }
 
+export const fetchTransactionByDate = (month_id) => {
+  const response = axios.post(`/month/${month_id}`, {month_id}).then((monthData) => {
+    return monthData.data
+  })
+
+  return {
+    type: 'FETCH_TRANSACTIONS_MONTH',
+    payload: response
+  }
+}
+
 
 export const fetchIncome = () => {
   const response = axios.get('/incomes').then((incomeData) => {

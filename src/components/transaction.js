@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import { bindActionCreators } from 'redux'
-import {connect} from 'react-redux'
 import TransactionList from './transactionList'
+import TransactionDates from './transactionDates'
 import TransactionCreate from './transactionCreate'
 import {Doughnut} from 'react-chartjs-2'
-import {Collapsible, CollapsibleItem, Dropdown, Button, NavItem} from 'react-materialize'
+
 
 
 export default class Transaction extends Component {
@@ -25,27 +24,16 @@ export default class Transaction extends Component {
     })
   }
 
-  createDropdown() {
-    let monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"]
-    let d = new Date()
-    let list = monthNames.map((month) => {
-      return (<NavItem>{month}</NavItem>)
-    })
-    return (
-      <Dropdown trigger={<Button style={{backgroundColor: "#000", borderRadius: "20px"}}>{monthNames[d.getMonth()]}</Button>}>
-      {list}
-      </Dropdown>
-    )
-}
-
+  
   render(){
+    const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December", "All"]
     return(
       <div>
 
         <br />
         <div className="row">
           <div className="center col l6 m6 s6 offset-l3 offset-m3 offset-s3">
-            {this.createDropdown()}
+            <TransactionDates months={monthNames} onMapComplete={this.onMapComplete}/>
           </div>
         </div>
 

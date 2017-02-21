@@ -5,7 +5,7 @@ import { fetchTransactions, fetchExpenses } from '../actions'
 import TransactionItem from './transactionItem'
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
-import {Collapsible, CollapsibleItem, Dropdown, Button} from 'react-materialize'
+import {Collapsible} from 'react-materialize'
 
 
 class TransactionList extends Component {
