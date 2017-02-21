@@ -27,7 +27,7 @@ incomeInfo() {
   return (
     <span>
       <span style={{float:'left', width:"33%"}}>{this.props.income.name}</span>
-      <span style={{float: 'center', width:"33%"}}>{(this.props.income.amount).toFixed(2)}</span>
+      <span style={{float: 'center', width:"33%"}}>${parseFloat(this.props.income.amount.toFixed(2)).toLocaleString()}</span>
     </span>
   )
 }

@@ -59,14 +59,21 @@ componentWillReceiveProps(next){
   })
 }
 
+showDate(){
+ let date = this.props.transaction.day
+ return (date.slice(5) + '/' + date.slice(0,4)).split("-").join("/")
+}
+
 transactionInfo() {
   return (
-    <span>
-      <span style={{float:'left', width:"25%"}}>{this.props.transaction.name}</span>
-      <span style={{float: 'center', width:"25%"}}>{this.findCategory.call(this)}</span>
-      <span style={{float: 'right', width:"25%"}}>{this.props.transaction.day}</span>
-      <span style={{float: 'right', width:"25%"}}>{(this.props.transaction.value).toFixed(2)}</span>
-    </span>
+    <div className="row">
+      <div className="col l2 m2 s2"></div>
+      <div className="col l2 m2 s2">{this.props.transaction.name}</div>
+      <div className="col l2 m2 s2">{this.findCategory.call(this)}</div>
+      <div className="col l2 m2 s2">{this.showDate()}</div>
+      <div className="col l2 m2 s2">${parseFloat(this.props.transaction.value.toFixed(2)).toLocaleString()}</div>
+      <div className="col l2 m2 s2"></div>
+    </div>
   )
 }
 
@@ -90,11 +97,11 @@ render () {
           <CollapsibleItem id={this.state.transaction.id} className="center" header={this.transactionInfo()}>
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="row">
-                <div className="center">
-                    <input style={{width: "25%", float: "left"}} className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
-                    <input style={{width: "25%", float: "center"}} className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
-                    <input style={{width: "25%", float: "right"}} className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
-                    <Input className="center" style={{width: "25%", float: "right"}} type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleChange.bind(this, 'expense_id')} >
+                <div className="center col l4 m4 s4 offset-l4 offset-m4 offset-s4">
+                    <input className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
+                    <input className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
+                    <input className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
+                    <Input className="center" type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleChange.bind(this, 'expense_id')} >
                       {this.createDropdown()}
                     </Input>
                 </div>

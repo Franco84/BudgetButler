@@ -27,7 +27,7 @@ expenseInfo() {
   return (
     <span>
       <span style={{float:'left', width:"33%"}}>{this.props.expense.category}</span>
-      <span style={{float: 'center', width:"33%"}}>{(this.props.expense.budget).toFixed(2)}</span>
+      <span style={{float: 'center', width:"33%"}}>${parseFloat(this.props.expense.budget.toFixed(2)).toLocaleString()}</span>
     </span>
   )
 }

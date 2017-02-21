@@ -28,12 +28,16 @@ class TransactionCreate extends Component {
 	}
 
 	handleSubmit(event) {
-		event.preventDefault()
-		this.props.createTransaction( this.state.transaction )
-		this.setState({
-   			transaction: Object.assign({}, this.state.transaction, {name:'', value: "", day: ""})
-   		});
-	}
+	        event.preventDefault()
+	        if (this.state.transaction.expense_id === "" || this.state.transaction.expense_id === "Select Category:") {
+	            alert('Please select a category')
+	        } else {
+	        this.props.createTransaction( this.state.transaction )
+	        this.setState({
+	              transaction: Object.assign({}, this.state.transaction, {name:'', value: "", day: ""})
+	          });
+	        }
+	    }
 
 	render() {
 			return(
