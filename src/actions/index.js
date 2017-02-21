@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {browserHistory} from 'react-router'
 
-axios.defaults.baseURL = 'http://localhost:3000/api/v1'
+axios.defaults.baseURL = 'http://budgetbutlerapi.herokuapp.com'
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
 export const fetchTransactions = (callback) => {
@@ -159,12 +159,12 @@ export const authenticateUser = (user) => {
     if (sessionStorage.jwt === 'undefined'){
       browserHistory.push('/login')
       return "The username or password is incorrect"
-    } 
-    else {    
+    }
+    else {
       browserHistory.push('/transactions')
       return userData}
     })
-    
+
   return {
     type: 'AUTHENTICATE_USER',
     payload: response
