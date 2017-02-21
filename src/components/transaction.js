@@ -10,12 +10,16 @@ export default class Transaction extends Component {
   this.onMapComplete = this.onMapComplete.bind(this)
   }
   onMapComplete(newValue) {
+    let ordered = newValue.sort(function(a, b) {
+        return parseFloat(b.value) - parseFloat(a.value);
+    });
+
     this.setState({
-      array: newValue.map((trans) => {
-      return trans.value}),
-      names: newValue.map((trans) => {
+      array: ordered.map((trans) => {
+      return trans.value}).slice(0,5),
+      names: ordered.map((trans) => {
       return trans.name
-      })
+      }).slice(0,5)
     })
   }
 
@@ -35,10 +39,10 @@ export default class Transaction extends Component {
             <TransactionCreate />
           </div>
           <div className="col l6 m6 s6 offset-l1 offset-m1 offset-s1">
-            <div className="center" style={{fontSize: "2rem"}}>Largest Transactions This Month:</div>
+            <div className="center" style={{fontSize: "2rem"}}>Largest 5 Transactions This Month:</div>
             <Doughnut data={{labels: this.state.names,datasets:[
               {data: this.state.array,
-            backgroundColor: ["red","yellow","green","blue","violet"],
+            backgroundColor: ["#A30000","#FF7700","#00AFD5","004777","EFD28D"],
             hoverBackgroundColor: ["#FF6384","#36A2EB","#FFCE56"]}]
             }} />
           </div>
