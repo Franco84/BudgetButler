@@ -8,7 +8,7 @@ import 'jquery-ui/themes/base/selectable.css';
 import 'jquery-ui/ui/core';
 import 'jquery-ui/ui/widgets/selectable';
 import ReactDOM from 'react-dom'
-import {Collapsible, CollapsibleItem, Input} from 'react-materialize'
+import {Collapsible, CollapsibleItem, Input, Modal} from 'react-materialize'
 import {connect} from 'react-redux'
 import { updateTransaction, deleteTransaction } from '../actions'
 
@@ -99,8 +99,8 @@ render () {
                     </Input>
                 </div>
               <br />
-              <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
-              <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} onClick={this.handleDelete.bind(this)}>Delete</button>
+              <button className="center btn black" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
+              <button className="center btn black" style={{float:'center', width:"10%"}} onClick={this.handleDelete.bind(this)}>Delete</button>
             </div>
           </form>
           </CollapsibleItem>
