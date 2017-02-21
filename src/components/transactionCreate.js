@@ -51,7 +51,7 @@ class TransactionCreate extends Component {
 							{this.createDropdown()}
 						</Input>
 						<br />
-						<button className="btn black" type="submit" >Submit</button>
+						<button className="btn black" style={{borderRadius: "20px"}} type="submit" >Submit</button>
 					</form>
 				</div>
 			)

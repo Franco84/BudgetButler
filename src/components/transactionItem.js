@@ -34,7 +34,9 @@ findCategory() {
       return expense.category
     }
   })
-  return category[0].category
+  if (category[0]) {
+   return category[0].category
+ }
 }
 
 createDropdown() {
@@ -105,10 +107,16 @@ render () {
                       {this.createDropdown()}
                     </Input>
                 </div>
-              <br />
-              <button className="center btn black" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
-              <button className="center btn black" style={{float:'center', width:"10%"}} onClick={this.handleDelete.bind(this)}>Delete</button>
-            </div>
+              </div>
+
+                <div className="row">
+                  <div className="center col l4 m4 s4 offset-l4 offset-m4 offset-s4">
+                <br />
+                <button className="center btn black" style={{float:'center', borderRadius: "20px"}} type="submit">Edit</button> &nbsp; &nbsp;
+                <button className="center btn black" style={{float:'center', borderRadius: "20px"}} onClick={this.handleDelete.bind(this)}>Delete</button>
+                </div>
+                </div>
+
           </form>
           </CollapsibleItem>
         </div>

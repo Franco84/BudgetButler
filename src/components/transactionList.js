@@ -5,7 +5,7 @@ import { fetchTransactions, fetchExpenses } from '../actions'
 import TransactionItem from './transactionItem'
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
-import {Collapsible, CollapsibleItem} from 'react-materialize'
+import {Collapsible, CollapsibleItem, Dropdown, Button} from 'react-materialize'
 
 
 class TransactionList extends Component {
@@ -23,6 +23,7 @@ class TransactionList extends Component {
     return this.props.transactions.map((tran, i) => {return <TransactionItem transaction={tran} expenseList={this.props.expenses} key={i}/>})
   }
 
+
   render(){
     if (!this.props.transactions) {
       return ( <div>Loading...</div>) }
@@ -31,7 +32,6 @@ class TransactionList extends Component {
 
       <div>
         <br />
-
         <div className="row">
 
           <div className="col l2 m2 s2">
