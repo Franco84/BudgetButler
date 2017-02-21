@@ -42,8 +42,8 @@ export default class Transaction extends Component {
             <div className="center" style={{fontSize: "2rem"}}>Largest 5 Transactions This Month:</div>
             <Doughnut data={{labels: this.state.names,datasets:[
               {data: this.state.array,
-            backgroundColor: ["#A30000","#FF7700","#00AFD5","004777","EFD28D"],
-            hoverBackgroundColor: ["#FF6384","#36A2EB","#FFCE56"]}]
+            backgroundColor: ["#A30000","#FF7700","#00AFD5","#0F4C5C","#EFD28D"],
+            hoverBackgroundColor: ["#FF6384","#F79F79","#44CCFF","#23395B","#F1E8B8"]}]
             }} />
           </div>
       </div>
