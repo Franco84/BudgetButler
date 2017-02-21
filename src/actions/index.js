@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {browserHistory} from 'react-router'
 
-axios.defaults.baseURL = 'http://budgetbutlerapi.herokuapp.com'
+axios.defaults.baseURL = 'http://budgetbutlerapi.herokuapp.com/api/v1'
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
 
 export const fetchTransactions = (callback) => {
