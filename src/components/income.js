@@ -9,10 +9,8 @@ export default class Expenses extends Component {
   render(){
     return(
       <div>
-        <div className="row">
         	<IncomeCreate />
         	<IncomeList />
-      </div>
     </div>
     )
   }

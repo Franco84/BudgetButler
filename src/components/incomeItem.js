@@ -25,10 +25,23 @@ componentWillReceiveProps(next){
 
 incomeInfo() {
   return (
-    <span>
-      <span style={{float:'left', width:"33%"}}>{this.props.income.name}</span>
-      <span style={{float: 'center', width:"33%"}}>${parseFloat(this.props.income.amount.toFixed(2)).toLocaleString()}</span>
-    </span>
+      <div className="row">
+
+        <div className="center col l3 m3 s3">
+        </div>
+
+        <div className="center col l3 m3 s3">
+          <div>{this.props.income.name}</div>
+        </div>
+
+        <div className="center col l3 m3 s3">
+          <div>${parseFloat(this.props.income.amount.toFixed(2)).toLocaleString()}</div>
+        </div>
+
+        <div className="center col l3 m3 s3">
+        </div>
+
+      </div>
   )
 }
 
@@ -51,23 +64,34 @@ render () {
       <div>
           <CollapsibleItem id={this.state.income.id} className="center" header={this.incomeInfo()}>
             <form onSubmit={this.handleSubmit.bind(this)}>
-              <div className="row">
-                <div className="col l4 m4 s4">
-                  <span style={{float:'center'}}>
-                    <input className="center" type="text" value={this.state.income.name} onChange={this.handleChange.bind(this, 'name')}/>
-                  </span>
-                </div>
-                <div className="col l4 m4 s4">
-                  <span style={{float:'center'}}>
-                    <input className="center" type="number" value={this.state.income.amount} onChange={this.handleChange.bind(this, 'amount')}/>
-                  </span>
-                </div>
+            <div className="row">
+
+              <div className="col l3 m3 s3">
               </div>
+
+              <div className="col l3 m3 s3">
+                    <input className="center" type="text" value={this.state.income.name} onChange={this.handleChange.bind(this, 'name')}/>
+              </div>
+
+              <div className="col l3 m3 s3">
+                    <input className="center" type="number" value={this.state.income.amount} onChange={this.handleChange.bind(this, 'amount')}/>
+              </div>
+
+              <div className="col l3 m3 s3">
+              </div>
+
+            </div>
               <br />
-              <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
-              <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} onClick={this.handleDelete.bind(this)}>Delete</button>
+            <div className="row">
+              <div className="col l6 m6 s6 offset-l3 offset-m3 offset-s3">
+              <button className="btn black" style={{borderRadius: "20px"}} type="submit">Edit</button> &nbsp; &nbsp;
+              <button className="btn black" style={{borderRadius: "20px"}} onClick={this.handleDelete.bind(this)}>Delete</button>
+              </div>
+            </div>
+
           </form>
           </CollapsibleItem>
+
       </div>
     )
   }
