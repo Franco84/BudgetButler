@@ -82,8 +82,8 @@ class Transaction extends Component {
             <div className="center" style={{fontSize: "2rem"}}>5 Largest Transactions This Month:</div>
             <Doughnut data={{labels: this.state.names,datasets:[
               {data: this.state.array,
-            backgroundColor: ["#A30000","#FF7700","#00AFD5","#0F4C5C","#EFD28D"],
-            hoverBackgroundColor: ["#FF6384","#F7D08A","#44CCFF","#23395B","#F1E8B8"]}]
+                backgroundColor: ["#A30000","#FF7700","#00AFD5","#0F4C5C","#5F0F40"],
+                hoverBackgroundColor: ["#FF6384","#F79F79","#44CCFF","#23395B","#C08497"]}]
             }} />
           </div>
         </div>
