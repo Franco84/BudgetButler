@@ -20,23 +20,23 @@ class Transaction extends Component {
 
   componentWillReceiveProps(next) {
     if (next.month.length > 0 ) {
-      this.setState({
-          transaction: Object.assign({}, this.state.transaction, {month: next.month} )
-        });
+      this.setState(
+        {array: this.state.array, names: this.state.names, modalIsOpen: this.state.modalIsOpen, month: next.month})
       } else {
-        this.setState({
-          transaction: Object.assign({}, this.state.transaction, {month: `${(new Date().getMonth())}` })
-        });
+        this.setState(
+          {array: this.state.array, names: this.state.names, modalIsOpen: this.state.modalIsOpen, month: `${(new Date().getMonth())}`});
       }
   }
+
 
   handleSubmit(state, transactionCreateComponent) {
           if (state.transaction.expense_id === "" || state.transaction.expense_id === "Select Category:") {
               alert('Please select a category')
           } else {
+            debugger;
           this.props.createTransaction( state.transaction )
           transactionCreateComponent.setState({
-                transaction: Object.assign({}, state.transaction, {name:'', value: "", day: ""})
+                transaction: Object.assign({}, state.transaction, {name:'', value: "", day: "", month: ""})
             });
           }
       }
