@@ -1,16 +1,54 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import { createTransaction } from '../actions'
+import $ from 'jquery'
 import TransactionList from './transactionList'
 import TransactionDates from './transactionDates'
 import TransactionCreate from './transactionCreate'
 import {Doughnut} from 'react-chartjs-2'
-import {Modal} from 'react-materialize'
+import {Modal, Button, ModalHeader, ModalBody, ModalFooter, Dropdown, Spinner} from 'elemental'
 
-export default class Transaction extends Component {
+class Transaction extends Component {
 
   constructor(props) {
   super(props)
-  this.state = {array: [],names:[]}
+  this.handleSubmit = this.handleSubmit.bind(this)
+  this.state = {array: [],names:[], modalIsOpen: false, month: ""}
   this.onMapComplete = this.onMapComplete.bind(this)
+  this.pleaseWork = this.pleaseWork.bind(this)
+  }
+
+  componentWillReceiveProps(next) {
+    if (next.month.length > 0 ) {
+      this.setState({
+          transaction: Object.assign({}, this.state.transaction, {month: next.month} )
+        });
+      } else {
+        this.setState({
+          transaction: Object.assign({}, this.state.transaction, {month: `${(new Date().getMonth())}` })
+        });
+      }
+  }
+
+  handleSubmit(state, transactionCreateComponent) {
+          if (state.transaction.expense_id === "" || state.transaction.expense_id === "Select Category:") {
+              alert('Please select a category')
+          } else {
+          this.props.createTransaction( state.transaction )
+          transactionCreateComponent.setState({
+                transaction: Object.assign({}, state.transaction, {name:'', value: "", day: ""})
+            });
+          }
+      }
+
+  toggleModal() {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    })
+  }
+
+  pleaseWork() {
+    return (<TransactionCreate expenses={this.props.expenses} handleSubmit={this.handleSubmit} month={this.state.month} />)
   }
 
   onMapComplete(newValue) {
@@ -50,11 +88,18 @@ export default class Transaction extends Component {
           </div>
         </div>
 
-          <div className="row">
-
-          <div className="col l4 m4 s4 offset-l4 offset-m4 offset-s4" style={{border: "1px solid black", borderRadius: "10px", padding: "25px"}}>
-            <div className="center" style={{fontSize: "2rem"}}>Add A Transaction</div>
-            <TransactionCreate />
+        <div className="row">
+          <div className="center col l4 m4 s4 offset-l4 offset-m4 offset-s4">
+            <Button onClick={this.toggleModal.bind(this)}>Add A Transaction</Button>
+              <Modal isOpen={this.state.modalIsOpen} onCancel={this.toggleModal.bind(this)} backdropClosesModal>
+              	<ModalHeader text="Add A Transaction" showCloseButton onClose={this.toggleModal.bind(this)} />
+              	<ModalBody>
+                  {this.pleaseWork()}
+                </ModalBody>
+              	<ModalFooter>
+              		<Button type="primary" onClick={this.toggleModal.bind(this)}>Close</Button>
+              	</ModalFooter>
+              </Modal>
           </div>
         </div>
 
@@ -64,3 +109,21 @@ export default class Transaction extends Component {
     )
   }
 }
+
+function mapStateToProps(state){
+	return {
+		expenses: state.expenses,
+		month: state.month
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    createTransaction: function(transaction){
+      let action = createTransaction( transaction )
+      dispatch( action )
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Transaction)
