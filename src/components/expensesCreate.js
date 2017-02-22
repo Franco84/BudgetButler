@@ -25,7 +25,7 @@ class ExpensesCreate extends Component {
 		return(
 			<div>
 				<div className="col l4 m4 s4 offset-l1 offset-m1 offset-s1">
-				<span style={{fontSize: "2rem"}}>Add An Expense </span>
+				<span style={{fontSize: "2rem"}}>Add An Budget Item </span>
 				<form onSubmit={this.handleSubmit.bind(this)}>
 					Category<input type='text' value={this.state.expense.category} onChange={this.handleInputChange.bind(this, 'category')}/>
 					Amount <input type='number' value={this.state.expense.budget} onChange={this.handleInputChange.bind(this, 'budget')}/>

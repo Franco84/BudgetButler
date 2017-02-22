@@ -35,9 +35,9 @@ class TransactionList extends Component {
           <div className="col l2 m2 s2">
           </div>
             <div className="center col l2 m2 s2 ">Name<hr/></div>
-            <div className="center col l2 m2 s2 ">Category<hr/></div>
             <div className="center col l2 m2 s2 ">Date<hr/></div>
             <div className="center col l2 m2 s2 ">Amount<hr/></div>
+            <div className="center col l2 m2 s2 ">Category<hr/></div>
             <div className="col l2 m2 s2">
             </div>
           </div>

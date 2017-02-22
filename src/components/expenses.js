@@ -39,8 +39,8 @@ class Expenses extends Component {
         <div className="row center">
           <ExpensesCreate />
           <div className="col l6 m6 s6 offset-l1 offset-m1 offset-s1">
-            <div className="center" style={{fontSize: "2rem"}}>Income vs. Expenses</div>
-            <Pie data={{labels: ["Income","Expenses"],datasets:[
+            <div className="center" style={{fontSize: "2rem"}}>Income vs. Budget</div>
+            <Pie data={{labels: ["Income","Budget"],datasets:[
               {data: [this.addIncome(),this.addExpenses()],
                 backgroundColor: ["green","red"],
                 hoverBackgroundColor: ["#7EE081","maroon"]}]
