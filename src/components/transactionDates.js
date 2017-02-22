@@ -2,11 +2,18 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Button, Input} from 'react-materialize'
 import { fetchTransactionByDate, fetchTransactions } from '../actions'
+
 class TransactionDates extends Component {
+
     constructor(props)  {
         super (props)
         this.state = {month: (new Date().getMonth())}
     }
+
+    componentDidMount(){
+        this.props.fetchTransactionByDate(this.state.month)
+    }
+
     changeDate(event) {
         if (event.target.value === "12") {
             this.setState({month:event.target.value})
@@ -16,12 +23,14 @@ class TransactionDates extends Component {
             this.props.fetchTransactionByDate(this.state.month)
         }
     }
+
     createDropdown() {
         let list = this.props.months.map((month,index) => {
           return (<option value={index}>{month}</option>)
         })
         return list
     }
+
      render() {
         return(
             <div>
