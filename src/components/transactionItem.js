@@ -112,7 +112,7 @@ render () {
                     Amount:<input className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
                     Category:<Input className="center" type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleChange.bind(this, 'expense_id')} >
                       {this.createDropdown()}
-                    </Input>                
+                    </Input>
                 </div>
               </div>
 
