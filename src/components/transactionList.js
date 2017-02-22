@@ -7,12 +7,10 @@ import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
 import {Collapsible, CollapsibleItem, Dropdown, Button} from 'react-materialize'
 
-
 class TransactionList extends Component {
 
   componentDidMount(){
     this.props.fetchExpenses()
-    this.props.fetchTransactions(this.props.onMapComplete)
   }
 
   componentWillReceiveProps(nextProps){
@@ -37,9 +35,9 @@ class TransactionList extends Component {
           <div className="col l2 m2 s2">
           </div>
             <div className="center col l2 m2 s2 ">Name<hr/></div>
-            <div className="center col l2 m2 s2 ">Category<hr/></div>
             <div className="center col l2 m2 s2 ">Date<hr/></div>
             <div className="center col l2 m2 s2 ">Amount<hr/></div>
+            <div className="center col l2 m2 s2 ">Category<hr/></div>
             <div className="col l2 m2 s2">
             </div>
           </div>
@@ -64,7 +62,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchTransactions: fetchTransactions, fetchExpenses: fetchExpenses}, dispatch) // create, fetch, update, delete tranactions
+  return bindActionCreators({fetchExpenses: fetchExpenses}, dispatch) // create, fetch, update, delete tranactions
 }
 //
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionList)

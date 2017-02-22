@@ -6,8 +6,20 @@ import {Collapsible, CollapsibleItem, Input} from 'react-materialize'
 class TransactionCreate extends Component {
 	constructor(props) {
 		super(props)
-		this.state = {transaction: {name: "", value: "", day: "", expense_id: "" }}
+		this.state = {transaction: {name: "", value: "", day: "", expense_id: "", month: ""}}
 		this.createDropdown = this.createDropdown.bind(this)
+	}
+
+	componentWillReceiveProps(next) {
+		if (next.month.length > 0 ) {
+			this.setState({
+	   			transaction: Object.assign({}, this.state.transaction, {month: next.month} )
+	   		});
+	   	} else {
+	   		this.setState({
+	   			transaction: Object.assign({}, this.state.transaction, {month: `${(new Date().getMonth())}` })
+	   		});
+	   	}	
 	}
 
 	createDropdown() {
@@ -60,7 +72,8 @@ class TransactionCreate extends Component {
 
 function mapStateToProps(state){
 	return {
-		expenses: state.expenses
+		expenses: state.expenses,
+		month: state.month
 	}
 }
 

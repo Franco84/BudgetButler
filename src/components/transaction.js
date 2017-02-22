@@ -5,11 +5,13 @@ import TransactionCreate from './transactionCreate'
 import {Doughnut} from 'react-chartjs-2'
 
 export default class Transaction extends Component {
+
   constructor(props) {
   super(props)
   this.state = {array: [],names:[]}
   this.onMapComplete = this.onMapComplete.bind(this)
   }
+
   onMapComplete(newValue) {
     let ordered = newValue.sort(function(a, b) {
         return parseFloat(b.value) - parseFloat(a.value);

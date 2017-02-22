@@ -23,7 +23,8 @@ constructor(props) {
       value: this.props.transaction.value,
       day: this.props.transaction.day,
       id: this.props.transaction.id,
-      expense_id: this.props.transaction.expense_id
+      expense_id: this.props.transaction.expense_id,
+      month: ""
     }
   }
 }
@@ -51,14 +52,20 @@ createDropdown() {
 
 
 componentWillReceiveProps(next){
-  this.setState({transaction: {
-    name: next.transaction.name,
-    value: next.transaction.value,
-    day: next.transaction.day,
-    id: next.transaction.id,
-    expense_id: next.transaction.expense_id
+  if (next.month.length > 0 ) {
+    this.setState({transaction: {
+      name: next.transaction.name,
+      value: next.transaction.value,
+      day: next.transaction.day,
+      id: next.transaction.id,
+      expense_id: next.transaction.expense_id,
+      month: next.month}
+    })
+  } else {
+      this.setState({
+        transaction: Object.assign({}, this.state.transaction, {month: `${(new Date().getMonth())}` })
+      });
     }
-  })
 }
 
 showDate(){
@@ -71,9 +78,9 @@ transactionInfo() {
     <div className="row">
       <div className="col l2 m2 s2"></div>
       <div className="col l2 m2 s2">{this.props.transaction.name}</div>
-      <div className="col l2 m2 s2">{this.findCategory.call(this)}</div>
       <div className="col l2 m2 s2">{this.showDate()}</div>
       <div className="col l2 m2 s2">${parseFloat(this.props.transaction.value.toFixed(2)).toLocaleString()}</div>
+      <div className="col l2 m2 s2">{this.findCategory.call(this)}</div>
       <div className="col l2 m2 s2"></div>
     </div>
   )
@@ -100,12 +107,12 @@ render () {
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="row">
                 <div className="center col l4 m4 s4 offset-l4 offset-m4 offset-s4">
-                    <input className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
-                    <input className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
-                    <input className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
-                    <Input className="center" type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleChange.bind(this, 'expense_id')} >
+                    Name:<input className="center" type="text" value={this.state.transaction.name} onChange={this.handleChange.bind(this, 'name')}/>
+                    Date:<input className="center datepicker" type="date" value={this.state.transaction.day} onChange={this.handleChange.bind(this, 'day')}/>
+                    Amount:<input className="center" type="number" value={this.state.transaction.value} onChange={this.handleChange.bind(this, 'value')}/>
+                    Category:<Input className="center" type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleChange.bind(this, 'expense_id')} >
                       {this.createDropdown()}
-                    </Input>
+                    </Input>                
                 </div>
               </div>
 
@@ -124,6 +131,11 @@ render () {
   }
 }
 
+function mapStateToProps(state){
+  return {
+    month: state.month
+  }
+}
 
 function mapDispatchToProps(dispatch){
     return {
@@ -139,4 +151,4 @@ function mapDispatchToProps(dispatch){
 }
 
 
-export default connect(null, mapDispatchToProps)(TransactionItem)
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionItem)
