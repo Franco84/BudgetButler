@@ -38,6 +38,13 @@ export const createTransaction = (transaction) => {
   }
 }
 
+export const changeMonth = (month) => {
+  return {
+    type: 'CHANGE_MONTH',
+    payload: month
+  }
+}
+
 export const updateTransaction = (transaction) => {
   const response = axios.patch(`/transactions/${transaction.id}`, {transaction}).then((transactionData) => {
   return transactionData.data
@@ -50,7 +57,7 @@ export const updateTransaction = (transaction) => {
 }
 
 export const deleteTransaction = (transaction) => {
-  const response = axios.delete(`/transactions/${transaction.id}`, {transaction}).then((transactionData) => {
+  const response = axios.post(`/transactions/delete/${transaction.id}`, {transaction}).then((transactionData) => {
   return transactionData.data
   })
 
