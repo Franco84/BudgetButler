@@ -54,8 +54,12 @@ handleSubmit(event) {
 }
 
 handleDelete(event){
-  event.preventDefault()
-  this.props.deleteExpenses(this.state.expense)
+ event.preventDefault()
+ if (this.state.expense.category == "Misc") {
+   alert("One cannot delete this budget item")
+ } else {
+ this.props.deleteExpenses(this.state.expense)
+ }
 }
 
 render () {
