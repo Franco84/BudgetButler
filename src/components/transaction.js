@@ -33,10 +33,10 @@ class Transaction extends Component {
           if (state.transaction.expense_id === "" || state.transaction.expense_id === "Select Category:") {
               alert('Please select a category')
           } else {
-            debugger;
+            debugger
           this.props.createTransaction( state.transaction )
           transactionCreateComponent.setState({
-                transaction: Object.assign({}, state.transaction, {name:'', value: "", day: "", month: ""})
+                transaction: Object.assign({}, state.transaction, {name:'', value: "", day: ""})
             });
           }
       }
