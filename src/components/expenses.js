@@ -19,7 +19,6 @@ class Expenses extends Component {
       amount += income.amount
       return income
     })
-    debugger
     return amount
   }
 

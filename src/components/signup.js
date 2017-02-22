@@ -14,12 +14,13 @@ class UserSignUp extends Component {
       const user = {name: this.refs.name.value, email: this.refs.email.value, password: this.refs.userPassword.value, password_confirmation: this.refs.passwordConfirmation.value}
       this.props.createUser(user)
   }
- 
+
   render() {
     return (
       <div className="container">
+        <br />
           <div className="row">
-            <div className="col l6 m12 s12 offset-l2">
+            <div className="col l6 m6 s6 offset-l3 offset-m3 offset-s3 center">
                     <br />
                     <form onSubmit={this.handleSubmit}>
                     <label htmlFor="name">Name</label>
@@ -30,7 +31,7 @@ class UserSignUp extends Component {
                     <input placeholder="Password" id="password" type="password" className="validate" ref="userPassword" />
                     <label htmlFor="passwordConfirmation">Confirm Password</label>
                     <input placeholder="Password" id="passwordConfirmation" type="password" className="validate" ref="passwordConfirmation" />
-                    <button className="btn blue darken-2" type="submit">Submit</button>
+                    <button className="btn black" style={{borderRadius: "20px"}} type="submit">Submit</button>
                     </form>
             </div>
           </div>

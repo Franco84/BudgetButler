@@ -16,17 +16,17 @@ class LogIn extends Component {
     return (
       <div className="container">
           <div className="row">
-            <div className="col l6 m12 s12 offset-l2">
+            <div className="col l6 m6 s6 offset-l3 offset-m3 offset-s3 center">
               <br />
-              <div style={{color: 'red'}}> 
+              <div style={{color: 'red'}}>
                 {this.props.currentUser}
-              </div>   
+              </div>
               <form onSubmit={this.handleSubmit.bind(this)}>
                 <label htmlFor="email">Email</label>
                 <input placeholder="Email" id="email" type="text" ref="email" className="validate" />
                 <label htmlFor="password">Password</label>
                 <input placeholder="Password" id="password" type="password" className="validate" ref="userPassword" />
-                <button className="btn blue darken-2" type="submit">Submit</button>
+                <button className="btn black" style={{borderRadius: "20px"}} type="submit">Submit</button>
               </form>
             </div>
           </div>
