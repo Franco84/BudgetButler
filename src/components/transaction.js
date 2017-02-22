@@ -3,12 +3,15 @@ import TransactionList from './transactionList'
 import TransactionDates from './transactionDates'
 import TransactionCreate from './transactionCreate'
 import {Doughnut} from 'react-chartjs-2'
+
 export default class Transaction extends Component {
+
   constructor(props) {
   super(props)
   this.state = {array: [],names:[]}
   this.onMapComplete = this.onMapComplete.bind(this)
   }
+
   onMapComplete(newValue) {
     this.setState({
       array: newValue.map((trans) => {
