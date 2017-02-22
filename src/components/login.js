@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { authenticateUser } from '../actions/index'
 import {connect} from 'react-redux'
 import {browserHistory} from 'react-router'
+import { Link } from 'react-router'
 
 class LogIn extends Component {
 
@@ -28,6 +29,8 @@ class LogIn extends Component {
                 <input placeholder="Password" id="password" type="password" className="validate" ref="userPassword" />
                 <button className="btn black" style={{borderRadius: "20px"}} type="submit">Submit</button>
               </form>
+              <br/>
+              <Link to="/signup" className="center" style={{color: "black"}}>Don't have an account?</Link>
             </div>
           </div>
           </div>
