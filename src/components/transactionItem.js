@@ -23,7 +23,8 @@ constructor(props) {
       value: this.props.transaction.value,
       day: this.props.transaction.day,
       id: this.props.transaction.id,
-      expense_id: this.props.transaction.expense_id
+      expense_id: this.props.transaction.expense_id,
+      month: ""
     }
   }
 }
@@ -51,14 +52,20 @@ createDropdown() {
 
 
 componentWillReceiveProps(next){
-  this.setState({transaction: {
-    name: next.transaction.name,
-    value: next.transaction.value,
-    day: next.transaction.day,
-    id: next.transaction.id,
-    expense_id: next.transaction.expense_id
+  if (next.month.length > 0 ) {
+    this.setState({transaction: {
+      name: next.transaction.name,
+      value: next.transaction.value,
+      day: next.transaction.day,
+      id: next.transaction.id,
+      expense_id: next.transaction.expense_id,
+      month: next.month}
+    })
+  } else {
+      this.setState({
+        transaction: Object.assign({}, this.state.transaction, {month: `${(new Date().getMonth())}` })
+      });
     }
-  })
 }
 
 showDate(){
@@ -124,6 +131,11 @@ render () {
   }
 }
 
+function mapStateToProps(state){
+  return {
+    month: state.month
+  }
+}
 
 function mapDispatchToProps(dispatch){
     return {
@@ -139,4 +151,4 @@ function mapDispatchToProps(dispatch){
 }
 
 
-export default connect(null, mapDispatchToProps)(TransactionItem)
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionItem)
