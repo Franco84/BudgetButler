@@ -36,7 +36,7 @@ class TransactionDates extends Component {
         return(
             <div>
                 <form>
-                    <Input className="center" type='select' label="Category" defaultValue={this.state.month} onChange={this.changeDate.bind(this)}>
+                    <Input className="center" type='select' label="Month" defaultValue={this.state.month} onChange={this.changeDate.bind(this)}>
                             {this.createDropdown()}
                     </Input>
                 </form>

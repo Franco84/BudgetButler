@@ -19,7 +19,7 @@ class TransactionCreate extends Component {
 	   		this.setState({
 	   			transaction: Object.assign({}, this.state.transaction, {month: `${(new Date().getMonth())}` })
 	   		});
-	   	}	
+	   	}
 	}
 
 	createDropdown() {
@@ -63,7 +63,7 @@ class TransactionCreate extends Component {
 							{this.createDropdown()}
 						</Input>
 						<br />
-						<button className="btn black" style={{borderRadius: "20px"}} type="submit" >Submit</button>
+						<button className="center btn black" style={{marginTop: "10px", borderRadius: "20px"}} type="submit" >Submit</button>
 					</form>
 				</div>
 			)
