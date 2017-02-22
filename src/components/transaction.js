@@ -36,7 +36,7 @@ class Transaction extends Component {
           } else {
           this.props.createTransaction( state.transaction )
           transactionCreateComponent.setState({
-                transaction: Object.assign({}, state.transaction, {name:'', value: "", day: ""})
+                transaction: Object.assign({}, state.transaction, {name:'', value: "", day: "", month: ""})
             });
           }
       }
