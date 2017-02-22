@@ -25,10 +25,22 @@ componentWillReceiveProps(next){
 
 expenseInfo() {
   return (
-    <span>
-      <span style={{float:'left', width:"33%"}}>{this.props.expense.category}</span>
-      <span style={{float: 'center', width:"33%"}}>${parseFloat(this.props.expense.budget.toFixed(2)).toLocaleString()}</span>
-    </span>
+    <div className="row">
+
+      <div className="center col l3 m3 s3">
+      </div>
+
+      <div className="center col l3 m3 s3">
+        <div>{this.props.expense.category}</div>
+      </div>
+
+      <div className="center col l3 m3 s3">
+        <div>${parseFloat(this.props.expense.budget.toFixed(2)).toLocaleString()}</div>
+      </div>
+
+      <div className="center col l3 m3 s3">
+      </div>
+    </div>
   )
 }
 
@@ -52,20 +64,24 @@ render () {
           <CollapsibleItem id={this.state.expense.id} className="center" header={this.expenseInfo()}>
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="row">
-                <div className="col l4 m4 s4">
-                  <span style={{float:'center'}}>
-                    <input className="center" type="text" value={this.state.expense.category} onChange={this.handleChange.bind(this, 'category')}/>
-                  </span>
+                <div className="col l3 m3 s3">
                 </div>
-                <div className="col l4 m4 s4">
-                  <span style={{float:'center'}}>
+                <div className="col l3 m3 s3">
+                    <input className="center" type="text" value={this.state.expense.category} onChange={this.handleChange.bind(this, 'category')}/>
+                </div>
+                <div className="col l3 m3 s3">
                     <input className="center" type="number" value={this.state.expense.budget} onChange={this.handleChange.bind(this, 'budget')}/>
-                  </span>
+                </div>
+                <div className="col l3 m3 s3">
                 </div>
               </div>
               <br />
-              <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} type="submit">Edit</button> &nbsp; &nbsp;
-              <button className="center btn blue darken-2" style={{float:'center', width:"10%"}} onClick={this.handleDelete.bind(this)}>Delete</button>
+              <div className="row">
+              <div className="col center l4 m4 s4 offset-l4 offset-m4 offset-s4">
+              <button className="btn black" style={{borderRadius: "20px"}} type="submit">Edit</button> &nbsp; &nbsp;
+              <button className="btn black" style={{borderRadius: "20px"}} onClick={this.handleDelete.bind(this)}>Delete</button>
+            </div>
+            </div>
           </form>
           </CollapsibleItem>
       </div>

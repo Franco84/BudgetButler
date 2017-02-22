@@ -46,7 +46,7 @@ class TransactionCreate extends Component {
 						<input className="center" type='text' placeholder="Name" value={this.state.transaction.name} onChange={this.handleInputChange.bind(this, 'name')}/>
 						<input className="center" type='number' placeholder="Amount" value={this.state.transaction.value} onChange={this.handleInputChange.bind(this, 'value')}/>
 						<input className="center" type='date' placeholder="Date" className="datepicker" value={this.state.transaction.day} onChange={this.handleInputChange.bind(this, 'day')}/>
-						<Input className="center" type='select' label="Category" defaultValue={this.state.transaction.expense_id} onChange={this.handleInputChange.bind(this, 'expense_id')} >
+						<Input className="center" type='select' label="Budget" defaultValue={this.state.transaction.expense_id} onChange={this.handleInputChange.bind(this, 'expense_id')} >
 							<option selected>Select Category:</option>
 							{this.createDropdown()}
 						</Input>

@@ -3,6 +3,7 @@ import TransactionList from './transactionList'
 import TransactionDates from './transactionDates'
 import TransactionCreate from './transactionCreate'
 import {Doughnut} from 'react-chartjs-2'
+
 export default class Transaction extends Component {
   constructor(props) {
   super(props)
@@ -29,7 +30,7 @@ export default class Transaction extends Component {
       <div>
         <br />
         <div className="row">
-          <div className="center col l6 m6 s6 offset-l3 offset-m3 offset-s3">
+          <div className="center col l4 m4 s4 offset-l4 offset-m4 offset-s4">
             <TransactionDates months={monthNames} onMapComplete={this.onMapComplete}/>
           </div>
         </div>
@@ -43,7 +44,7 @@ export default class Transaction extends Component {
             <Doughnut data={{labels: this.state.names,datasets:[
               {data: this.state.array,
             backgroundColor: ["#A30000","#FF7700","#00AFD5","#0F4C5C","#EFD28D"],
-            hoverBackgroundColor: ["#FF6384","#F79F79","#44CCFF","#23395B","#F1E8B8"]}]
+            hoverBackgroundColor: ["#FF6384","#F7D08A","#44CCFF","#23395B","#F1E8B8"]}]
             }} />
           </div>
       </div>

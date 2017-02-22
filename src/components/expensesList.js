@@ -24,21 +24,23 @@ class ExpensesList extends Component {
     else return(
       <div>
         <br />
+        <div className="row">
           <div className="col l3 m3 s3 center">
-              Category<br /><hr />
           </div>
           <div className="col l3 m3 s3 center">
-              Amount<br /><hr />
+              Category<hr />
           </div>
-          <div className="row">
-            <div className="col l9 m9 s9">
+          <div className="col l3 m3 s3 center">
+              Amount<hr />
+          </div>
+          <div className="col l3 m3 s3 center">
+          </div>
+        </div>
                 <Collapsible>
               		{this.expensesItems()}
                 </Collapsible>
-            </div>
-          </div>
-        <br />
-      </div>
+                <br />
+        </div>
     )
   }
 }
