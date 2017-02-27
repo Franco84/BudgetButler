@@ -33,6 +33,8 @@ checkLogin (){
                 <NavItem><Link to="/expenses">Budget</Link></NavItem>
                 <NavItem divider />
                 <NavItem><Link to="/income">Income</Link></NavItem>
+                <NavItem divider />
+                <NavItem><Logout /></NavItem>
               </div>
             </Dropdown>
           </div>
@@ -90,7 +92,7 @@ render(){
       <nav>
         <div className="navbar-fixed">
         <div className="nav-wrapper black">
-          <Link to="/" className="brand-logo center">Budget Butler</Link>
+          <Link to="/" className="brand-logo center logosize">Budget Butler</Link>
         {this.checkLogin()}
         </div>
     </div>
