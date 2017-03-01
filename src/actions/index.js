@@ -29,9 +29,7 @@ export const fetchTransactionByDate = (month_id) => {
 }
 
 export const createTransaction = (transaction) => {
-  debugger
   const response = axios.post('/transactions', {transaction}).then((transactionData) => {
-  debugger
   return transactionData.data
   })
 

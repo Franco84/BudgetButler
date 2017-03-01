@@ -15,7 +15,7 @@ class Transaction extends Component {
   this.handleSubmit = this.handleSubmit.bind(this)
   this.state = {array: [],names:[], modalIsOpen: false, month: ""}
   this.onMapComplete = this.onMapComplete.bind(this)
-  this.pleaseWork = this.pleaseWork.bind(this)
+  this.createTransaction = this.createTransaction.bind(this)
   }
 
   componentWillReceiveProps(next) {
@@ -33,7 +33,6 @@ class Transaction extends Component {
           if (state.transaction.expense_id === "" || state.transaction.expense_id === "Select Category:") {
               alert('Please select a category')
           } else {
-            debugger
           this.props.createTransaction( state.transaction )
           transactionCreateComponent.setState({
                 transaction: Object.assign({}, state.transaction, {name:'', value: "", day: ""})
@@ -47,7 +46,7 @@ class Transaction extends Component {
     })
   }
 
-  pleaseWork() {
+  createTransaction() {
     return (<TransactionCreate expenses={this.props.expenses} handleSubmit={this.handleSubmit} month={this.state.month} />)
   }
 
@@ -94,7 +93,7 @@ class Transaction extends Component {
               <Modal isOpen={this.state.modalIsOpen} onCancel={this.toggleModal.bind(this)} backdropClosesModal>
               	<ModalHeader text="Add A Transaction" showCloseButton onClose={this.toggleModal.bind(this)} />
               	<ModalBody>
-                  {this.pleaseWork()}
+                  {this.createTransaction()}
                 </ModalBody>
               	<ModalFooter>
               		<Button type="primary" onClick={this.toggleModal.bind(this)}>Close</Button>
