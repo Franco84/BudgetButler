@@ -27,11 +27,14 @@ class ExpensesList extends Component {
         <div className="row">
           <div className="col l3 m3 s3 center">
           </div>
-          <div className="col l3 m3 s3 center">
+          <div className="col l2 m2 s2 center">
               Category<hr />
           </div>
-          <div className="col l3 m3 s3 center">
+          <div className="col l2 m2 s2 center">
               Amount<hr />
+          </div>
+          <div className="col l2 m2 s2 center">
+              Month<hr />
           </div>
           <div className="col l3 m3 s3 center">
           </div>

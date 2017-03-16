@@ -16,11 +16,11 @@ class ExpensesItem extends React.Component {
 
 constructor(props) {
     super(props)
-    this.state = {expense: {category: this.props.expense.category, budget: this.props.expense.budget, id: this.props.expense.id}}
+    this.state = {expense: {category: this.props.expense.category, budget: this.props.expense.budget, id: this.props.expense.id, month: this.props.expense.month}}
 }
 
 componentWillReceiveProps(next){
-  this.setState({expense: {category: next.expense.category, budget: next.expense.budget, id: next.expense.id}})
+  this.setState({expense: {category: next.expense.category, budget: next.expense.budget, id: next.expense.id, month: next.expense.month}})
 }
 
 expenseInfo() {
@@ -30,12 +30,16 @@ expenseInfo() {
       <div className="center col l3 m3 s3">
       </div>
 
-      <div className="center col l3 m3 s3">
+      <div className="center col l2 m2 s2">
         <div>{this.props.expense.category}</div>
       </div>
 
-      <div className="center col l3 m3 s3">
+      <div className="center col l2 m2 s2">
         <div>${parseFloat(this.props.expense.budget.toFixed(2)).toLocaleString()}</div>
+      </div>
+
+      <div className="center col l2 m2 s2">
+        <div>{this.props.expense.month}</div>
       </div>
 
       <div className="center col l3 m3 s3">
@@ -70,11 +74,14 @@ render () {
               <div className="row">
                 <div className="col l3 m3 s3">
                 </div>
-                <div className="col l3 m3 s3">
+                <div className="col l2 m2 s2">
                     <input className="center" type="text" value={this.state.expense.category} onChange={this.handleChange.bind(this, 'category')}/>
                 </div>
-                <div className="col l3 m3 s3">
+                <div className="col l2 m2 s2">
                     <input className="center" type="number" value={this.state.expense.budget} onChange={this.handleChange.bind(this, 'budget')}/>
+                </div>
+                <div className="col l2 m2 s2">
+                    <input className="center" type="text" value={this.state.expense.month} onChange={this.handleChange.bind(this, 'month')}/>
                 </div>
                 <div className="col l3 m3 s3">
                 </div>

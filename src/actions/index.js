@@ -117,7 +117,6 @@ export const fetchExpenses = () => {
   const response = axios.get('/expenses').then((expensesData) => {
   return expensesData.data
   })
-  debugger
   return {
     type: 'FETCH_EXPENSES',
     payload: response
@@ -147,6 +146,7 @@ export const updateExpenses = (expense) => {
 }
 
 export const deleteExpenses = (expense) => {
+  debugger
   const response = axios.delete(`/expenses/${expense.id}`, {expense}).then((expensesData) => {
     return expensesData.data
   })
