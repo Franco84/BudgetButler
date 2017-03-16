@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-
 import {Collapsible, CollapsibleItem, Input} from 'react-materialize'
 
 export default class TransactionCreate extends Component {
@@ -53,5 +52,5 @@ export default class TransactionCreate extends Component {
 		} else {
 		return (<span></span>)
 		}
-		}
+	}
 }
